@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
     flex: 1
   },
   input: {
-    fontSize: 18,
+    fontSize: 22,
     color: '#000',
     paddingLeft: 5,
     paddingRight: 5,
-    flex: 2
-  }
+    flex: 2,
+    paddingBottom: 10,
+   }
 
 });
 

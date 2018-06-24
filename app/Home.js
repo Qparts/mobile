@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
-import {
-    View, Text } from 'react-native';
-  
-
-class Home extends Component {
-    render(){
-       
-        return (
-          <View >
-            <Text> Home</Text>
-           </View>
-        );
-      }
+import React, {Component} from 'react';
+import Router from './routes/routes';
+ 
+export default class Home extends Component {
+  render () {
+    return (
+      <Router/>
+    );
+  }
 }
-export default Home;
