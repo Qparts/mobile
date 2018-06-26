@@ -1,27 +1,19 @@
-import Page1 from '../Page1/Page1';
-import Page2 from '../Page2/Page2';
-import Page3 from '../Page3/Page3';
+import Home from '../Home/Home';
+import Cart from '../Cart/Cart';
+import Notification from '../Notification/Notification';
 import SideMenu from '../SideMenu/SideMenu';
 import {createDrawerNavigator} from 'react-navigation';
-import {TouchableOpacity} from 'react-native'
-const navigationOptions = {
-   header: ({ navigate }) => ({
-    left: (
-      <TouchableOpacity
-        onPress={() => navigate('DrawerOpen')}
-      >emad</TouchableOpacity>
-    ),
-  }),
-};
-export default createDrawerNavigator({
-  Page1: {
-     screen: Object.assign(Page1, { navigationOptions }),
+
+ export default createDrawerNavigator({
+ 
+  Home: {
+    screen: Home,
+},
+  Cart: {
+    screen: Cart
   },
-  Page2: {
-    screen: Page2
-  },
-  Page3: {
-    screen: Page3
+  Notification: {
+    screen: Notification
   }
 }, {
   contentComponent: SideMenu,

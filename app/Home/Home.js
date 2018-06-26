@@ -2,20 +2,21 @@
 
 import React, {Component} from 'react';
 import {
-  Text,
-  View
+  View, Text,
 } from 'react-native';
-
-class Page3 extends Component {
+ 
+class Home extends Component {
+  
+ 
   render () {
     return (
       <View style={{padding: 50}}>
         <Text>
-          Page3
+        Home
         </Text>
       </View>
     );
   }
 }
-
-export default Page3;
+ 
+export default Home;

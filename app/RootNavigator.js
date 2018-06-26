@@ -1,8 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
-import Home from './Home';
+import Routes from './routes/routes';
 import LoginForm from './LoginForm';
 import Splash from './Splash';
-
 const RootNavigator = createStackNavigator({
   Splash: {
     screen: Splash,
@@ -18,13 +17,13 @@ const RootNavigator = createStackNavigator({
       headerLeft: null
     }
   },
-  Home: {
-      screen: Home,
+  Routes: {
+      screen: Routes,
       navigationOptions: {
         title: 'Home',
         headerLeft: null
       }
-  },
+    },
   });
   
   export default RootNavigator;

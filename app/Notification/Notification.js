@@ -5,17 +5,18 @@ import {
   Text,
   View
 } from 'react-native';
-
-class Page2 extends Component {
+ class Notification extends Component {
+  static navigationOptions = {
+    title: 'Notification',
+}
   render () {
     return (
       <View style={{padding: 50}}>
         <Text>
-          Page2
+          Notifaction
         </Text>
       </View>
     );
   }
 }
-
-export default Page2;
+export default Notification;
