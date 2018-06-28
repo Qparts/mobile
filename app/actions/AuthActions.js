@@ -5,9 +5,10 @@
     LOGIN_FAILED
   } from './types';
   import { AsyncStorage } from 'react-native';
+  import userControllers from "../providers/controllers/UsersAPIControllers";
 
   const onLoginSuccess = (dispatch, user, token) => {
-
+       console.log("onLogin"+user)
     AsyncStorage.setItem('app_token',token)
       .then(() => {
         dispatch({ type: LOGIN_SUCCESS, user })
@@ -18,29 +19,28 @@
     dispatch({ type: LOGIN_FAILED, error: errorMessage})
   };
   
-  const handleResponse = (dispatch, data) => {
-    if (!data.success) {
+  const handleResponse = (dispatch, data,token) => {
+    if (!data) {
+      data.message='User Not Found';
       onLoginFailed(dispatch, data.message);
     }else {
-      onLoginSuccess(dispatch, data.user, data.token)
+      console.log("handleResponse>onLoginSuccess"+data)
+      onLoginSuccess(dispatch, data, token)
     }
   }
   export const loginUser = ({ username, password }) => {
     return (dispatch) => {
       dispatch({ type: LOGIN_ATTEMPT });
-  
-      //Call the back-end API
-      //Please do not spam/abuse it so others can use it as well.
-      const data ={
-        success:true,
-        message:'login now',
-        user:{
-          username:'emad@asd.com',
-          password:'123',
-        },
-        token:'asdasd56as4d65a4d6a5sd4a6s5d4gfd64g5',
+      new userControllers().login({email: username, password}).then(res => {
+          if(JSON.stringify(res.customer)){
+          handleResponse(dispatch, JSON.stringify(res.customer),JSON.stringify(res.token));
 
-      }
-      handleResponse(dispatch, data);
-   }
+        }
+      
+    }).catch(err => {
+        if (err) {
+          console.error(error)
+        }
+    });
+    };
 }

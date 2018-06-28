@@ -33,6 +33,7 @@ class LoginForm extends Component {
   }
    
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.user);
     if (nextProps.user) {
       this.props.navigation.navigate('Routes');
     }
