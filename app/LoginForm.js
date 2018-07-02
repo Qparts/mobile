@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Card,CardItem,Input,Button,Spinner } from '../common'
-import {Text, StyleSheet} from 'react-native';
+import {Text,View,Image, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -15,10 +15,23 @@ const styles = StyleSheet.create({
     marginTop: 20,
    },
   orStyle:{
-    fontSize: 22,
-    alignSelf:'center',
-    color:'rgb(42, 55, 68)'
-  }
+    textAlign:'center', 
+    fontWeight:'bold', 
+    fontSize:18, 
+    marginTop:0, 
+    width:200, 
+    }, 
+    logoContainer: {
+      justifyContent:'center', 
+      alignItems:'center', 
+      flex:1
+    }, 
+    logo: {
+      width:66, 
+      height:58, 
+      borderRadius:50, 
+  
+    }
 });
 
 class LoginForm extends Component {
@@ -40,7 +53,10 @@ class LoginForm extends Component {
   }
 
  
-  
+  _handleSignup() {
+    this.props.navigation.navigate('signup'); 
+
+  }
  
   _onLoginPressed() {
     const { username, password } = this.state;
@@ -59,7 +75,14 @@ class LoginForm extends Component {
     render(){
         return (
           <Card>
-
+                <CardItem>
+                 <View style={styles.logoContainer}>
+                   <Image
+                    style={styles.logo}
+                     source ={require('./Assets/img/avatar.png')}
+                     /> 
+                  </View>  
+                  </CardItem>
           <CardItem>
             <Input
               label='Email'
@@ -81,16 +104,9 @@ class LoginForm extends Component {
           <CardItem>
               { this._renderButton() }
           </CardItem>
-          <Text style={styles.fbStyle}></Text>
-          <Icon.Button   name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
-           Login with Facebook
-            </Icon.Button>
-            
-            <Text style={styles.orStyle}>OR Sign up</Text>
-          
-           <Icon.Button name="twitter" backgroundColor="#37d1fc" onPress={this.loginWithFacebook}>
-           Login with Twitter
-           </Icon.Button>
+          <CardItem>
+         <Text style =  {styles.orStyle}onPress =  {this._handleSignup.bind(this)} > Sign up </Text >
+        </CardItem > 
           <Text style={styles.errorStyle}>{this.props.error}</Text>
          </Card>
           );
