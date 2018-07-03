@@ -11,5 +11,10 @@ export class httpUrlConfig {
     getLoginUrl() {
         return FakeAPI + api + "rest/login/email/";
     }
+
+    getSignupUrl(){
+        return FakeAPI + api + "rest/login/signup/";
+
+    }
 }
 export default httpUrlConfig;

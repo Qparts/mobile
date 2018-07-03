@@ -34,7 +34,10 @@ export class UsersAPIControllers {
         const FETCH_URL = new UrlAPIControllers().getLoginUrl();
         return new HttpServiceConfig().post(FETCH_URL, body);
     }
-
+    signup(body) {
+        const FETCH_URL = new UrlAPIControllers().getSignupUrl();
+        return new HttpServiceConfig().post(FETCH_URL, body);
+    }
 
 }
 
