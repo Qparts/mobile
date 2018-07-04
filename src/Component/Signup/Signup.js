@@ -7,9 +7,9 @@ import {
   View
 }from 'react-native'; 
 import Icon from 'react-native-vector-icons/FontAwesome'; 
-import {Card, CardItem, Input, Button, Spinner }from '../../common'; 
+import {Card, CardItem, Input, Button, }from '../../common'; 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import userControllers from "../providers/controllers/UsersAPIControllers";
+import userControllers from "../../providers/controllers/UsersAPIControllers";
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
    }, 
   errorStyle:{
-    fontSize: 17,
+    fontSize: 14,
     alignSelf: 'center',
     color: 'red'
   }
@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
     );
   }
   _onSignUpPressed(){
-     let user = {
+   if(this.handleValidation()){
+    let user = {
       first_name:this.state.first_name,
       last_name:this.state.last_name,
       email:this.state.email,
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
        console.error(error)
         }
        });
+   }
   }
 
   handleValidation() {
@@ -161,9 +163,7 @@ validateEmail(value) {
 
             /> 
             </CardItem>
-            {!this.state.first_name ? 
-            <CardItem><Text style={styles.errorStyle}>{this.state.first_nameError}</Text></CardItem>
-            :null}
+            <Text style={styles.errorStyle}>{this.state.first_nameError}</Text>
             <CardItem>
             <Input
             label='Last Name'
@@ -180,9 +180,7 @@ validateEmail(value) {
           }}
             />
             </CardItem>
-            {!this.state.last_name ? 
-            <CardItem><Text style={styles.errorStyle}>{this.state.last_nameError}</Text></CardItem>
-            :null}
+            <Text style={styles.errorStyle}>{this.state.last_nameError}</Text>
              <CardItem>
             <Input
             label='Email'
@@ -199,9 +197,7 @@ validateEmail(value) {
           }}
             />
            </CardItem>
-           {!this.state.email ? 
-            <CardItem><Text style={styles.errorStyle}>{this.state.emailError}</Text></CardItem>
-            :null} 
+           <Text style={styles.errorStyle}>{this.state.emailError}</Text>
             <CardItem> 
             <View style={styles.inputContainer}>
 
@@ -238,9 +234,7 @@ validateEmail(value) {
             </View>
             
            </CardItem>
-           {!this.state.phone_number ? 
-            <CardItem><Text style={styles.errorStyle}>{this.state.phone_numberError}</Text></CardItem>
-            :null}            
+           <Text style={styles.errorStyle}>{this.state.phone_numberError}</Text>        
             <CardItem>
             <Input
             label='Password'
@@ -257,9 +251,7 @@ validateEmail(value) {
           }}
             />
            </CardItem>
-           {!this.state.password ? 
-            <CardItem><Text style={styles.errorStyle}>{this.state.passwordError}</Text></CardItem>
-            :null} 
+           <Text style={styles.errorStyle}>{this.state.passwordError}</Text>
            <CardItem>
             <Input
             label='Re-type Passwrod'
@@ -276,9 +268,7 @@ validateEmail(value) {
           }}
             />
            </CardItem>
-           {!this.state.re_password ? 
-            <CardItem><Text style={styles.errorStyle}>{this.state.re_passwordError}</Text></CardItem>
-            :null} 
+           <Text style={styles.errorStyle}>{this.state.re_passwordError}</Text>
              <CardItem>
               { this._handleRenderSignup() }
           </CardItem>

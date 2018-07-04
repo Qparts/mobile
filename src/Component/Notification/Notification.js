@@ -1,22 +1,17 @@
-
-
 import React, {Component} from 'react';
 import {
-  View, Text,
+  Text,
+  View
 } from 'react-native';
- 
-class Home extends Component {
-  
- 
+ class Notification extends Component {
   render () {
     return (
       <View style={{padding: 50}}>
         <Text>
-        Home
+          Notifaction
         </Text>
       </View>
     );
   }
 }
- 
-export default Home;
+export default Notification;

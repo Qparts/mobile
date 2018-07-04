@@ -8,7 +8,6 @@
   import userControllers from "../providers/controllers/UsersAPIControllers";
 
   const onLoginSuccess = (dispatch, user, token) => {
-       console.log("onLogin"+user)
     AsyncStorage.setItem('app_token',token)
       .then(() => {
         dispatch({ type: LOGIN_SUCCESS, user })
@@ -24,7 +23,6 @@
       data.message='User Not Found';
       onLoginFailed(dispatch, data.message);
     }else {
-      console.log("handleResponse>onLoginSuccess"+data)
       onLoginSuccess(dispatch, data, token)
     }
   }

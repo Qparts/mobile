@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AsyncStorage, ActivityIndicator, Image } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage, ActivityIndicator } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,9 +21,7 @@ class Splash extends Component {
     AsyncStorage.getItem('app_token')
       .then(token => {
           if (token) {
-            // this._navigate('Home');
-            this._navigate('Login');
-
+            this._navigate('Dashboard');
           }else {
             this._navigate('Login');
           }

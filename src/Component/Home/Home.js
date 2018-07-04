@@ -1,22 +1,17 @@
-
-
 import React, {Component} from 'react';
 import {
-  Text,
-  View
+  View, Text,
 } from 'react-native';
- class Notification extends Component {
-  static navigationOptions = {
-    title: 'Notification',
-}
+class Home extends Component {
   render () {
     return (
       <View style={{padding: 50}}>
         <Text>
-          Notifaction
+        Home
         </Text>
       </View>
     );
   }
 }
-export default Notification;
+ 
+export default Home;

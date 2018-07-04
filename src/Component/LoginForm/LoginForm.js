@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import {Card,CardItem,Input,Button,Spinner } from '../common'
+import {Card,CardItem,Input,Button,Spinner } from '../../common'
 import {Text,View,Image, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-import {loginUser}from './actions';
+import {loginUser}from '../../actions';
 const styles = StyleSheet.create({
   errorStyle: {
     fontSize: 17,
@@ -31,6 +29,11 @@ const styles = StyleSheet.create({
       height:58, 
       borderRadius:50, 
   
+    },
+    errorStyle:{
+    fontSize: 14,
+    alignSelf: 'center',
+    color: 'red'
     }
 });
 
@@ -39,16 +42,17 @@ class LoginForm extends Component {
     super();
     this.state = {
       username: '',
+      usernameError:'',
       password: '',
+      passwordError:''
 
     };
     
   }
    
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.user);
     if (nextProps.user) {
-      this.props.navigation.navigate('Routes');
+      this.props.navigation.navigate('Dashboard');
     }
   }
 
@@ -60,8 +64,38 @@ class LoginForm extends Component {
  
   _onLoginPressed() {
     const { username, password } = this.state;
-    this.props.loginUser({username,password})
+    if(this.handleValidation()){
+      this.props.loginUser({username,password})
+    }
   }
+  handleValidation(){
+    this.validation();
+    if (this.state.username === "") {
+        return false;
+    } else if (this.state.password === "") {
+      return false;
+  }else if (!this.validateEmail(this.state.username)) {
+    this.setState({
+      usernameError: (<Text style={styles.errorStyle}>Username Not Valid.</Text>)
+    });
+    return false;
+}
+    return true;
+}
+ 
+  validation() {
+    this.state.username === "" ? this.setState({
+      usernameError: (<Text style={styles.errorStyle}>Username required.</Text>)
+      }) : this.setState({ usernameError: null });
+      this.state.password === "" ? this.setState({
+        passwordError: (<Text style={styles.errorStyle}>Password required.</Text>)
+      }) : this.setState({ passwordError: null });  
+}
+
+validateEmail(value) {
+  let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(value);
+}
 
   _renderButton() {
     if (this.props.loading) {
@@ -79,7 +113,7 @@ class LoginForm extends Component {
                  <View style={styles.logoContainer}>
                    <Image
                     style={styles.logo}
-                     source ={require('./Assets/img/avatar.png')}
+                     source ={require('../../Assets/img/avatar.png')}
                      /> 
                   </View>  
                   </CardItem>
@@ -88,19 +122,37 @@ class LoginForm extends Component {
               label='Email'
               placeholder='Enter your email'
               secureTextEntry={false}
-              onChangeText={(username) => this.setState({ username  }) }
+              onChangeText={(username) => {
+                this.setState({ username: username });
+                username === "" ? this.setState({
+                  usernameError: (
+                        <Text  style={styles.errorStyle}>Username is
+                                required.</Text>)
+                }) : this.setState({ usernameError: null });
+
+            }}
             />
           </CardItem>
-  
+           <Text style={styles.errorStyle}>{this.state.usernameError}</Text> 
+
           <CardItem>
             <Input
               label='Password'
               placeholder='Enter your Password'
               secureTextEntry
-              onChangeText={(password) => this.setState({ password }) }
+              onChangeText={(password) => {
+                this.setState({ password: password });
+                password === "" ? this.setState({
+                  passwordError: (
+                        <Text  style={styles.errorStyle}>Password is
+                                required.</Text>)
+                }) : this.setState({ passwordError: null });
+
+            }}
             />
           </CardItem>
-  
+           <Text style={styles.errorStyle}>{this.state.passwordError}</Text> 
+
           <CardItem>
               { this._renderButton() }
           </CardItem>
