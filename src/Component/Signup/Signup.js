@@ -65,26 +65,32 @@ const styles = StyleSheet.create({
     );
   }
   _onSignUpPressed(){
-   if(this.handleValidation()){
-    let user = {
-      first_name:this.state.first_name,
-      last_name:this.state.last_name,
-      email:this.state.email,
-      country_id:this.state.country_id,
-      phone_number:this.state.phone_number,
-      password:this.state.password,
-      re_password:this.state.re_password,
-    }
-       new userControllers().signup(user).then(res => {
-        if(JSON.stringify(res)){
-         handleResponse(dispatch,res);
-       }      
-     }).catch(err => {
-          if (err) {
-       console.error(error)
-        }
-       });
-   }
+    this.props.navigation.navigate('ConfirmCode', {
+      code: 'asdasdas55656',
+     });
+  //  if(this.handleValidation()){
+            
+  //   let user = {
+  //     first_name:this.state.first_name,
+  //     last_name:this.state.last_name,
+  //     email:this.state.email,
+  //     country_id:this.state.country_id,
+  //     phone_number:this.state.phone_number,
+  //     password:this.state.password,
+  //     re_password:this.state.re_password,
+  //   }
+  //      new userControllers().signup(user).then(res => {
+  //       if(JSON.stringify(res)){
+  //         this.props.navigation.navigate('ConfirmCode', {
+  //           code: 'asdasdas55656',
+  //          });
+  //      }      
+  //    }).catch(err => {
+  //         if (err) {
+  //      console.error(error)
+  //       }
+  //      });
+  //  }
   }
 
   handleValidation() {

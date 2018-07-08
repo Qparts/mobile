@@ -7,6 +7,7 @@ import Cart from '../Component/Cart/Cart';
 import LoginForm from '../Component/LoginForm/LoginForm';
 import Splash from '../Component/Splash/Splash';
 import Signup from '../Component/Signup/Signup';
+import ConfirmCode from '../Component/Signup/ConfirmCode/ConfirmCode';
 import DrawerScreen from './DrawerScreen';
 
 
@@ -54,6 +55,12 @@ const StackNavigator = createStackNavigator({
       <Image source={require('../Assets/img/left-arrow.png')}/>
     </TouchableOpacity>,
       title: 'signup',
+    }),
+  },ConfirmCode: {
+    screen: ConfirmCode,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: null,
+      title: 'Confirmation Code',
     }),
   },
  Dashboard: {
