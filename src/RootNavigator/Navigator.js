@@ -9,6 +9,7 @@ import Splash from '../Component/Splash/Splash';
 import Signup from '../Component/Signup/Signup';
 import ConfirmCode from '../Component/Signup/ConfirmCode/ConfirmCode';
 import DrawerScreen from './DrawerScreen';
+import I18n from '../I18n';
 
 
 const DrawerNavigator = createDrawerNavigator({
@@ -46,7 +47,7 @@ const StackNavigator = createStackNavigator({
     screen: LoginForm,
     navigationOptions: ({ navigation }) => ({
       headerLeft: null,
-      title:'Login',
+      title:I18n.t('navigator_title_login'),
     }),
   }, signup: {
     screen: Signup,
@@ -54,13 +55,13 @@ const StackNavigator = createStackNavigator({
       headerLeft: <TouchableOpacity onPress={() => { navigation.goBack()}}>
       <Image source={require('../Assets/img/left-arrow.png')}/>
     </TouchableOpacity>,
-      title: 'signup',
+      title:I18n.t('navigator_title_signup'),
     }),
   },ConfirmCode: {
     screen: ConfirmCode,
     navigationOptions: ({ navigation }) => ({
       headerLeft: null,
-      title: 'Confirmation Code',
+      title: I18n.t('navigator_title_confirmation_code'),
     }),
   },
  Dashboard: {
@@ -69,7 +70,7 @@ const StackNavigator = createStackNavigator({
   },
 }, {
   navigationOptions: ({ navigation }) => ({
-    title: typeof (navigation.state.params) === 'undefined' || typeof (navigation.state.params.title) === 'undefined' ? 'Home' : navigation.state.params.title,
+    title: typeof (navigation.state.params) === 'undefined' || typeof (navigation.state.params.title) === 'undefined' ?I18n.t('navigator_title_home') : navigation.state.params.title,
     headerLeft:
   <TouchableOpacity onPress={() => { navigation.dispatch(DrawerActions.toggleDrawer()); }}>
     <MenuImage navigation={navigation} />

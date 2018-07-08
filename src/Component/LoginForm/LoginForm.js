@@ -3,6 +3,8 @@ import {Card,CardItem,Input,Button,Spinner } from '../../common'
 import {Text,View,Image, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import {loginUser}from '../../actions';
+import I18n from '../../I18n';
+
 const styles = StyleSheet.create({
   errorStyle: {
     fontSize: 17,
@@ -76,7 +78,7 @@ class LoginForm extends Component {
       return false;
   }else if (!this.validateEmail(this.state.username)) {
     this.setState({
-      usernameError: (<Text style={styles.errorStyle}>Username Not Valid.</Text>)
+      usernameError: (<Text style={styles.errorStyle}>{ I18n.t('login_error_username_notValid')}</Text>)
     });
     return false;
 }
@@ -85,10 +87,10 @@ class LoginForm extends Component {
  
   validation() {
     this.state.username === "" ? this.setState({
-      usernameError: (<Text style={styles.errorStyle}>Username required.</Text>)
+      usernameError: (<Text style={styles.errorStyle}>{ I18n.t('login_error_username')}</Text>)
       }) : this.setState({ usernameError: null });
       this.state.password === "" ? this.setState({
-        passwordError: (<Text style={styles.errorStyle}>Password required.</Text>)
+        passwordError: (<Text style={styles.errorStyle}>{ I18n.t('login_error_password')}</Text>)
       }) : this.setState({ passwordError: null });  
 }
 
@@ -102,7 +104,7 @@ validateEmail(value) {
       return <Spinner />;
     }
     return (
-      <Button onPress={this._onLoginPressed.bind(this)}>Login</Button>
+      <Button onPress={this._onLoginPressed.bind(this)}>{ I18n.t('login_handle_button')}</Button>
     );
   }
 
@@ -118,16 +120,16 @@ validateEmail(value) {
                   </View>  
                   </CardItem>
           <CardItem>
-            <Input
-              label='Email'
-              placeholder='Enter your email'
+            <Input 
+              label={ I18n.t('login_input_email_label')}
+              placeholder={ I18n.t('login_input_email_placeholder')}
               secureTextEntry={false}
               onChangeText={(username) => {
                 this.setState({ username: username });
                 username === "" ? this.setState({
                   usernameError: (
-                        <Text  style={styles.errorStyle}>Username is
-                                required.</Text>)
+                        <Text  style={styles.errorStyle}>{ I18n.t('login_error_username')}
+                                 </Text>)
                 }) : this.setState({ usernameError: null });
 
             }}
@@ -137,15 +139,15 @@ validateEmail(value) {
 
           <CardItem>
             <Input
-              label='Password'
-              placeholder='Enter your Password'
+              label={ I18n.t('login_input_password_label')}
+              placeholder={ I18n.t('login_input_password_placeholder')}
               secureTextEntry
               onChangeText={(password) => {
                 this.setState({ password: password });
                 password === "" ? this.setState({
                   passwordError: (
-                        <Text  style={styles.errorStyle}>Password is
-                                required.</Text>)
+                        <Text  style={styles.errorStyle}>{ I18n.t('login_error_password')}
+                                 </Text>)
                 }) : this.setState({ passwordError: null });
 
             }}
@@ -157,7 +159,7 @@ validateEmail(value) {
               { this._renderButton() }
           </CardItem>
           <CardItem>
-         <Text style =  {styles.orStyle}onPress =  {this._handleSignup.bind(this)} > Sign up </Text >
+         <Text style =  {styles.orStyle}onPress =  {this._handleSignup.bind(this)} >{ I18n.t('login_handle_button_signup')}  </Text >
         </CardItem > 
           <Text style={styles.errorStyle}>{this.props.error}</Text>
          </Card>

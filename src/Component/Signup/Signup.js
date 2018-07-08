@@ -9,7 +9,8 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import {Card, CardItem, Input, Button, }from '../../common'; 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import userControllers from "../../providers/controllers/UsersAPIControllers";
+// import userControllers from "../../providers/controllers/UsersAPIControllers";
+import I18n from '../I18n';
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
 
   _handleRenderSignup() {
     return (
-      <Button onPress={this._onSignUpPressed.bind(this)}>Send Code</Button>
+      <Button onPress={this._onSignUpPressed.bind(this)}>{I18n.t('signup_handle_send_code')}</Button>
     );
   }
   _onSignUpPressed(){
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
       return false;
   } else if (!this.validateEmail(this.state.email)) {
       this.setState({
-          emailError: (<Text style={styles.errorStyle}>email Not Valid.</Text>)
+          emailError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_email_notVaild')}</Text>)
       });
       return false;
   } else if (this.state.phone_number===""){
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     return false;
 }else if (this.state.password != this.state.re_password) {
       this.setState({
-        re_passwordError: (<Text style={styles.errorStyle}>Your password and confirmation password do not match .</Text>)
+        re_passwordError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_pass_repass')}</Text>)
       });
       return false;
   }
@@ -124,22 +125,22 @@ const styles = StyleSheet.create({
 }
 validation() {
   this.state.first_name === "" ? this.setState({
-    first_nameError: (<Text style={styles.errorStyle}>First  Name required.</Text>)
+    first_nameError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_first_name')}</Text>)
     }) : this.setState({ first_nameError: null });
     this.state.last_name === "" ? this.setState({
-    last_nameError: (<Text style={styles.errorStyle}>Last  Name required.</Text>)
+    last_nameError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_last_name')}</Text>)
     }) : this.setState({ last_nameError: null });
     this.state.email === "" ? this.setState({
-        emailError: (<Text style={styles.errorStyle}>email is required.</Text>)
+        emailError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_email')}</Text>)
     }) : this.setState({ emailError: null });
     this.state.password === "" ? this.setState({
-        passwordError: (<Text style={styles.errorStyle}>Password is required.</Text>)
+        passwordError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_password')}</Text>)
     }) : this.setState({ passwordError: null });
     this.state.re_password === "" ? this.setState({
-      re_passwordError: (<Text style={styles.errorStyle}>Confirm Password required.</Text>)
+      re_passwordError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_repassword')}</Text>)
     }) : this.setState({ re_passwordError: null });
     this.state.phone_number === "" ? this.setState({
-      phone_numberError: (<Text style={styles.errorStyle}>Phone Number is required.</Text>)
+      phone_numberError: (<Text style={styles.errorStyle}>{I18n.t('signup_error_phone_no')}</Text>)
     }) : this.setState({ phone_numberError: null });
 }
 validateEmail(value) {
@@ -154,15 +155,15 @@ validateEmail(value) {
               <Card>
               <CardItem>
               <Input
-              label='First Name'
-              placeholder='Enter your first name'
+              label={I18n.t('signup_input_first_name_label')}
+              placeholder={I18n.t('signup_input_first_name_placeholder')}
               secureTextEntry={false}
               onChangeText={(first_name) => {
                 this.setState({ first_name: first_name });
                 first_name === "" ? this.setState({
                   first_nameError: (
-                        <Text  style={styles.errorStyle}>First Name is
-                                required.</Text>)
+                        <Text  style={styles.errorStyle}> 
+                                {I18n.t('signup_error_first_name')}</Text>)
                 }) : this.setState({ first_nameError: null });
 
             }}
@@ -172,15 +173,15 @@ validateEmail(value) {
             <Text style={styles.errorStyle}>{this.state.first_nameError}</Text>
             <CardItem>
             <Input
-            label='Last Name'
-            placeholder='Enter your last name'
+            label={I18n.t('signup_input_last_name_label')}
+            placeholder={I18n.t('signup_input_last_name_placeholder')}
             secureTextEntry =  {false}
             onChangeText={(last_name) => {
               this.setState({ last_name: last_name });
               last_name === "" ? this.setState({
                 last_nameError: (
-                      <Text  style={styles.errorStyle}>Last Name is
-                              required.</Text>)
+                      <Text  style={styles.errorStyle}> 
+                              {I18n.t('signup_error_last_name')}</Text>)
               }) : this.setState({ last_nameError: null });
 
           }}
@@ -189,15 +190,15 @@ validateEmail(value) {
             <Text style={styles.errorStyle}>{this.state.last_nameError}</Text>
              <CardItem>
             <Input
-            label='Email'
-            placeholder='Enter your email'
+            label= {I18n.t('signup_input_email_label')}
+            placeholder= {I18n.t('signup_input_email_placeholder')}
             secureTextEntry={false}
             onChangeText={(email) => {
               this.setState({ email: email });
               email === "" ? this.setState({
                 emailError: (
-                      <Text  style={styles.errorStyle}>email is
-                              required.</Text>)
+                      <Text  style={styles.errorStyle}> 
+                               {I18n.t('signup_error_email')}</Text>)
               }) : this.setState({ emailError: null });
 
           }}
@@ -207,7 +208,7 @@ validateEmail(value) {
             <CardItem> 
             <View style={styles.inputContainer}>
 
-             <Text style={styles.label}>Country</Text>
+             <Text style={styles.label}>{I18n.t('signup_input_country')}</Text>
 
             <Picker
              style={styles.input}
@@ -222,18 +223,18 @@ validateEmail(value) {
             <CardItem>
             <View style={styles.inputContainer}>
 
-          <Text style={styles.label}>Phone Number</Text>
+          <Text style={styles.label}>{I18n.t('signup_input_phone_no_label')}</Text>
 
              <TextInput
              style={styles.input}
-             placeholder='Enter your Phone'
+             placeholder={I18n.t('signup_input_phone_no_placeholder')}
              keyboardType={'phone-pad'}
              onChangeText={(phone_number) => {
              this.setState({ phone_number: phone_number });
                 phone_number === "" ? this.setState({
                  phone_numberError: (
-                     <Text  style={styles.errorStyle}>Phone Number is
-                    required.</Text>)
+                     <Text  style={styles.errorStyle}> 
+                   {I18n.t('signup_error_phone_no')}</Text>)
                 }) : this.setState({ phone_numberError: null });
 
            }}/>
@@ -243,15 +244,15 @@ validateEmail(value) {
            <Text style={styles.errorStyle}>{this.state.phone_numberError}</Text>        
             <CardItem>
             <Input
-            label='Password'
-            placeholder='Enter your Password'
+            label={I18n.t('signup_input_password_label')}
+            placeholder={I18n.t('signup_input_password_placeholder')}
             secureTextEntry={true}
             onChangeText={(password) => {
               this.setState({ password: password });
               password === "" ? this.setState({
                 passwordError: (
-                      <Text  style={styles.errorStyle}>Password  is
-                              required.</Text>)
+                      <Text  style={styles.errorStyle}> 
+                              {I18n.t('signup_error_password')}</Text>)
               }) : this.setState({ passwordError: null });
 
           }}
@@ -260,15 +261,15 @@ validateEmail(value) {
            <Text style={styles.errorStyle}>{this.state.passwordError}</Text>
            <CardItem>
             <Input
-            label='Re-type Passwrod'
-            placeholder='Re-type Passwrod '
+            label= {I18n.t('signup_input_re_password_label')}
+            placeholder= {I18n.t('signup_input_re_password_placeholder')}
             secureTextEntry={true}
             onChangeText={(re_password) => {
               this.setState({ re_password: re_password });
               re_password === "" ? this.setState({
                 re_passwordError: (
-                      <Text  style={styles.errorStyle}>Confirm Password is
-                      required.</Text>)
+                      <Text  style={styles.errorStyle}> 
+                       {I18n.t('signup_error_repassword')}</Text>)
               }) : this.setState({ re_passwordError: null });
 
           }}
@@ -279,10 +280,11 @@ validateEmail(value) {
               { this._handleRenderSignup() }
           </CardItem>
             <Icon.Button   name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}> 
-           Login with Facebook
-          </Icon.Button>
+            {I18n.t('signup_with_facebook')}
+           </Icon.Button>
           <Icon.Button name="twitter" backgroundColor="#37d1fc" onPress={this.loginWithFacebook}> 
-           Login with Twitter </Icon.Button>
+           {I18n.t('signup_with_twitter')}
+            </Icon.Button>
           </Card > 
           </KeyboardAwareScrollView>
 
