@@ -44,6 +44,11 @@ class DrawerScreen extends Component {
               {I18n.t('drawer_title_logout')}
               </Text>
             </View>
+            <View style={styles.navSectionStyle}>
+              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Setting',I18n.t('drawer_title_setting'))}>
+              {I18n.t('drawer_title_setting')}
+              </Text>
+            </View>
           </View>
          
         </ScrollView>

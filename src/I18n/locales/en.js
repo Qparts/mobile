@@ -18,6 +18,7 @@ export default {
     drawer_title_notification:'Notification',
     drawer_title_cart:'Cart',
     drawer_title_logout:'Logout',
+    drawer_title_setting:'Settings',
     signup_handle_send_code:'Send Code',
     signup_error_pass_repass:'Your password and confirmation password do not match .',
     signup_error_email_notVaild:'email Not Valid.',

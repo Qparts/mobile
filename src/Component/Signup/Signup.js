@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Card, CardItem, Input, Button, }from '../../common'; 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // import userControllers from "../../providers/controllers/UsersAPIControllers";
-import I18n from '../I18n';
+import I18n from '../../I18n';
 
 const styles = StyleSheet.create({
   inputContainer: {

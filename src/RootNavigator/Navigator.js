@@ -5,6 +5,7 @@ import Home from '../Component/Home/Home';
 import Notification from '../Component/Notification/Notification';
 import Cart from '../Component/Cart/Cart';
 import LoginForm from '../Component/LoginForm/LoginForm';
+import Setting from '../Component/Setting';
 import Splash from '../Component/Splash/Splash';
 import Signup from '../Component/Signup/Signup';
 import ConfirmCode from '../Component/Signup/ConfirmCode/ConfirmCode';
@@ -20,6 +21,8 @@ const DrawerNavigator = createDrawerNavigator({
     screen: Notification,
   }, Cart: {
     screen: Cart,
+  }, Setting: {
+    screen: Setting,
   }
 }, {
  
