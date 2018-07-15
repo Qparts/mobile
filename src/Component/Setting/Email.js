@@ -1,9 +1,11 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'; 
-import PropTypes from 'prop-types'
+import React from 'react';
+import {
+  StyleSheet, Text, TouchableOpacity, View,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import PropTypes from 'prop-types';
 
-import mainColor from './constants'
+import mainColor from './constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,9 +43,11 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'center',
   },
-})
+});
 
-const Email = ({ containerStyle, onPressEmail, name, email, index }) => (
+const Email = ({
+  containerStyle, onPressEmail, name, email, index,
+}) => (
   <TouchableOpacity onPress={() => onPressEmail(email)}>
     <View style={[styles.container, containerStyle]}>
       <View style={styles.iconRow}>
@@ -58,17 +62,21 @@ const Email = ({ containerStyle, onPressEmail, name, email, index }) => (
       </View>
       <View style={styles.emailRow}>
         <View style={styles.emailColumn}>
-          <Text style={styles.emailText}>{email}</Text>
+          <Text style={styles.emailText}>
+            {email}
+          </Text>
         </View>
         <View style={styles.emailNameColumn}>
           {name.trim().length !== 0 && (
-            <Text style={styles.emailNameText}>{name}</Text>
+            <Text style={styles.emailNameText}>
+              {name}
+            </Text>
           )}
         </View>
       </View>
     </View>
   </TouchableOpacity>
-)
+);
 
 Email.propTypes = {
   containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
@@ -76,11 +84,11 @@ Email.propTypes = {
   index: PropTypes.string.isRequired,
   name: PropTypes.string,
   onPressEmail: PropTypes.func.isRequired,
-}
+};
 
 Email.defaultProps = {
   containerStyle: {},
   name: null,
-}
+};
 
-export default Email
+export default Email;

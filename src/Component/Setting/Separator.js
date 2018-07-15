@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
     borderColor: '#EDEDED',
     borderWidth: 0.8,
   },
-})
+});
 
 const Separator = () => (
   <View style={styles.container}>
     <View style={styles.separatorOffset} />
     <View style={styles.separator} />
   </View>
-)
+);
 
-export default Separator
+export default Separator;

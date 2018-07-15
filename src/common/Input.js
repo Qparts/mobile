@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
 const Input = (props) => {
   return (
     <View style={styles.inputContainer}>
-
       <Text style={styles.label}>{props.label}</Text>
 
       <TextInput

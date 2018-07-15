@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {
-  View, Text,
+    View, Text,
 } from 'react-native';
 class Catalog extends Component {
-  render () {
-    return (
-      <View style={{padding: 50}}>
-        <Text>
+    render () {
+        return (
+            <View style={{padding: 50}}>
+                <Text>
         Catalog
-        </Text>
-      </View>
-    );
-  }
+                </Text>
+            </View>
+        );
+    }
 }
  
 export default Catalog;

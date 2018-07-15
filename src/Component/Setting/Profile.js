@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
- import { Card } from '../../common'
- import Icon from 'react-native-vector-icons/FontAwesome'; 
-
+import React, { Component } from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Image,
   ImageBackground,
@@ -12,14 +10,19 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native'
-import PropTypes from 'prop-types'
+  Modal,
+  TextInput
+} from 'react-native';
+import PropTypes from 'prop-types';
+import {
+  Card, CardItem, Input, Button,
+} from '../../common';
+ 
+import mainColor from './constants';
 
-import mainColor from './constants'
-
-import Email from './Email'
-import Separator from './Separator'
-import Tel from './Tel'
+import Email from './Email';
+import Separator from './Separator';
+import Tel from './Tel';
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -95,9 +98,25 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     textAlign: 'center',
   },
-})
+  input: {
+    fontSize: 22,
+    color: '#000',
+    paddingLeft: 5,
+    paddingRight: 5,
+    flex: 2,
+    paddingBottom: 10,
+   }
+});
 
 class Contact extends Component {
+
+
+  ShowModalFunction(visible) {
+
+    this.setState({ ModalVisibleStatus: visible });
+
+  }
+
   static propTypes = {
     avatar: PropTypes.string.isRequired,
     avatarBackground: PropTypes.string.isRequired,
@@ -111,14 +130,14 @@ class Contact extends Component {
         email: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
-      })
+      }),
     ).isRequired,
     tels: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         number: PropTypes.string.isRequired,
-      })
+      }),
     ).isRequired,
   }
 
@@ -129,24 +148,30 @@ class Contact extends Component {
     emailDS: new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     }).cloneWithRows(this.props.emails),
+    ModalVisibleStatus: false,
+    full_name: '',
+    phone_number:'',
+    email:'',
+    Password:''
+
   }
 
   onPressPlace = () => {
-    console.log('place')
+    console.log('place');
   }
 
-  onPressTel = number => {
-    Linking.openURL(`tel://${number}`).catch(err => console.log('Error:', err))
+  onPressTel = (number) => {
+    Linking.openURL(`tel://${number}`).catch(err => console.log('Error:', err));
   }
 
   onPressSms = () => {
-    console.log('sms')
+    console.log('sms');
   }
 
-  onPressEmail = email => {
+  onPressEmail = (email) => {
     Linking.openURL(`mailto://${email}?subject=subject&body=body`).catch(err =>
-      console.log('Error:', err)
-    )
+      console.log('Error:', err),
+    );
   }
 
   renderHeader = () => {
@@ -155,10 +180,71 @@ class Contact extends Component {
       avatarBackground,
       name,
       address: { city, country },
-    } = this.props
+    } = this.props;
 
     return (
       <View style={styles.headerContainer}>
+        <Modal
+          transparent={false}
+
+          animationType="slide"
+
+          visible={this.state.ModalVisibleStatus}
+
+          onRequestClose={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus); }}
+        >
+
+               <Card>
+              <CardItem>
+              <Input
+              label="Full Name"
+              placeholder="Full Name"
+              secureTextEntry={false}
+              onChangeText={(full_name) => {
+                this.setState({ full_name: full_name });
+            }}
+
+            /> 
+            </CardItem> 
+            <CardItem>
+              <Input
+              label="Phone Number"
+              placeholder="Phone Number"
+              secureTextEntry={false}
+              onChangeText={(phone_number) => {
+                this.setState({ phone_number: phone_number });
+            }}
+
+            /> 
+            </CardItem> 
+            <CardItem>
+              <Input
+              label="Email"
+              placeholder="Email"
+              secureTextEntry={false}
+              onChangeText={(email) => {
+                this.setState({ email: email });
+            }}
+
+            /> 
+            </CardItem> 
+            <CardItem>
+              <Input
+              label="Password"
+              placeholder="Password"
+              secureTextEntry={true}
+              onChangeText={(Password) => {
+                this.setState({ Password: Password });
+            }}
+
+            /> 
+            </CardItem> 
+            <CardItem>
+            <Button onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus); }}>Update</Button>
+          </CardItem>
+            </Card>
+        </Modal>
+
         <ImageBackground
           style={styles.headerBackgroundImage}
           blurRadius={10}
@@ -166,6 +252,7 @@ class Contact extends Component {
             uri: avatarBackground,
           }}
         >
+
           <View style={styles.headerColumn}>
             <Image
               style={styles.userImage}
@@ -173,8 +260,29 @@ class Contact extends Component {
                 uri: avatar,
               }}
             />
-            <Text style={styles.userNameText}>{name}</Text>
+            <Text style={styles.userNameText}>
+              {name}
+              {' '}
+              <Icon
+                name="edit"
+                color="transparent"
+                style={styles.placeIcon}
+                onPress={() => { this.ShowModalFunction(true); }}
+                  />
+
+            </Text>
+
             <View style={styles.userAddressRow}>
+
+
+              <View style={styles.userCityRow}>
+                <Text style={styles.userCityText}>
+                  {city}
+,
+                  {' '}
+                  {country}
+                </Text>
+              </View>
               <View>
                 <Icon
                   name="map-marker"
@@ -183,34 +291,27 @@ class Contact extends Component {
                   onPress={this.onPressPlace}
                 />
               </View>
-              <View style={styles.userCityRow}>
-                <Text style={styles.userCityText}>
-                  {city}, {country}
-                </Text>
-              </View>
             </View>
           </View>
         </ImageBackground>
       </View>
-    )
+    );
   }
 
   renderTel = () => (
     <ListView
       contentContainerStyle={styles.telContainer}
       dataSource={this.state.telDS}
-      renderRow={({ id, name, number }, _, k) => {
-        return (
-          <Tel
-            key={`tel-${id}`}
-            index={k}
-            name={name}
-            number={number}
-            onPressSms={this.onPressSms}
-            onPressTel={this.onPressTel}
+      renderRow={({ id, name, number }, _, k) => (
+        <Tel
+          key={`tel-${id}`}
+          index={k}
+          name={name}
+          number={number}
+          onPressSms={this.onPressSms}
+          onPressTel={this.onPressTel}
           />
-        )
-      }}
+      )}
     />
   )
 
@@ -218,17 +319,15 @@ class Contact extends Component {
     <ListView
       contentContainerStyle={styles.emailContainer}
       dataSource={this.state.emailDS}
-      renderRow={({ email, id, name }, _, k) => {
-        return (
-          <Email
-            key={`email-${id}`}
-            index={k}
-            name={name}
-            email={email}
-            onPressEmail={this.onPressEmail}
+      renderRow={({ email, id, name }, _, k) => (
+        <Email
+          key={`email-${id}`}
+          index={k}
+          name={name}
+          email={email}
+          onPressEmail={this.onPressEmail}
           />
-        )
-      }}
+      )}
     />
   )
 
@@ -244,8 +343,8 @@ class Contact extends Component {
           </Card>
         </View>
       </ScrollView>
-    )
+    );
   }
 }
 
-export default Contact
+export default Contact;

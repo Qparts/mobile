@@ -28,7 +28,6 @@ class Splash extends Component {
       });
   }
 
-    //Added this dummy method to cause a delay just to see the splash
   _navigate(screen) {
     setTimeout(() => {
       this.props.navigation.navigate(screen);

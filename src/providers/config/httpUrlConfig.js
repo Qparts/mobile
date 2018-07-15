@@ -1,6 +1,6 @@
 
- const ONLINE_URL = 'http://25.9.215.92'; 
-const api = "service-qetaa-customer/";
+ const ONLINE_URL = 'http://qtest.fareed9.com/'; 
+const api = "api/v1/customer/";
 const ONLINE_PORT = "8081";
 const FakeAPI = ONLINE_URL + ":" + ONLINE_PORT + "/";
 export class httpUrlConfig {
@@ -9,7 +9,7 @@ export class httpUrlConfig {
 
     }
     getLoginUrl() {
-        return FakeAPI + api + "rest/login/email/";
+        return FakeAPI + api + "login/email/";
     }
 
     getSignupUrl(){

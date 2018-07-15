@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import {
-  Text,
   View
 } from 'react-native';
+import { Search,Badge} from '../../common';
  class Notification extends Component {
   render () {
     return (
       <View style={{padding: 50}}>
-        <Text>
-          Notifaction
-        </Text>
+        <Search>
+          Search
+        </Search>
+        <View>
+          <Badge color="#c7c8c3"></Badge>
+        </View>
       </View>
     );
   }
