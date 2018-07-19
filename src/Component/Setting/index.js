@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import contactData from '../../mocks/contact.json'
+import contactData from "../../mocks/contact.json";
 
-import Profile from './Profile'
+import Profile from "./Profile";
 
-const ProfileScreen = () => <Profile {...contactData} />
+const ProfileScreen = () => <Profile {...contactData} />;
 
 ProfileScreen.navigationOptions = () => ({
-  header: null,
-})
+  header: null
+});
 
 ProfileScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-}
+  navigation: PropTypes.object.isRequired
+};
 
-export default ProfileScreen
+export default ProfileScreen;

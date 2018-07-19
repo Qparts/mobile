@@ -1,22 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-export default styles = StyleSheet.create({
+export default (styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff"
   },
   heading: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    textAlign: "center",
+    margin: 10
   },
   menuItem: {
     padding: 10,
     borderWidth: 0.5,
-    borderColor: '#d6d7da',
-  },mincontainer: {
+    borderColor: "#d6d7da"
+  },
+  mincontainer: {
     paddingTop: 20,
     flex: 1
   },
@@ -24,7 +25,7 @@ export default styles = StyleSheet.create({
     padding: 10
   },
   navSectionStyle: {
-    backgroundColor: 'lightgrey'
+    backgroundColor: "lightgrey"
   },
   sectionHeadingStyle: {
     paddingVertical: 10,
@@ -32,7 +33,6 @@ export default styles = StyleSheet.create({
   },
   footerContainer: {
     padding: 20,
-    backgroundColor: 'lightgrey'
-     
+    backgroundColor: "lightgrey"
   }
-});
+}));

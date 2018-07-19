@@ -1,100 +1,116 @@
-import React, { Component } from 'react';
-import { Text, View, FlatList, Image } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, { Component } from "react";
+import { Text, View, FlatList, Image } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
-const image1 = require('../images/a.jpg');
-const image2 = require('../images/b.jpg');
-const image3 = require('../images/c.jpg');
-const image4 = require('../images/d.jpg');
-const image5 = require('../images/e.jpg');
+const image1 = require("../images/a.jpg");
+const image2 = require("../images/b.jpg");
+const image3 = require("../images/c.jpg");
+const image4 = require("../images/d.jpg");
+const image5 = require("../images/e.jpg");
 
 const data = [
-{
-  id: 1,
-  image: image1,
-  name: 'Item 1',
-  price: 10,
-  amountTaken: 3
-}, {
-  id: 2,
-  image: image2,
-  name: 'Item 2',
-  price: 5,
-  amountTaken: 4
-}, {
-  id: 3,
-  image: image3,
-  name: 'Item 3',
-  price: 16,
-  amountTaken: 2
-}, {
-  id: 4,
-  image: image4,
-  name: 'Item 4',
-  price: 3,
-  amountTaken: 3
-}, {
-  id: 5,
-  image: image5,
-  name: 'Item 5',
-  price: 20,
-  amountTaken: 1
-},  
+  {
+    id: 1,
+    image: image1,
+    name: "Item 1",
+    price: 10,
+    amountTaken: 3
+  },
+  {
+    id: 2,
+    image: image2,
+    name: "Item 2",
+    price: 5,
+    amountTaken: 4
+  },
+  {
+    id: 3,
+    image: image3,
+    name: "Item 3",
+    price: 16,
+    amountTaken: 2
+  },
+  {
+    id: 4,
+    image: image4,
+    name: "Item 4",
+    price: 3,
+    amountTaken: 3
+  },
+  {
+    id: 5,
+    image: image5,
+    name: "Item 5",
+    price: 20,
+    amountTaken: 1
+  }
 ];
 
 class Item extends Component {
   _renderItem({ item, index }) {
-    const { 
-      containerStyle, 
+    const {
+      containerStyle,
       lastItemStyle,
-      imageStyle, 
-      textStyle, 
+      imageStyle,
+      textStyle,
       counterStyle,
-      priceStyle } = styles;
+      priceStyle
+    } = styles;
 
     return (
-    <View style={(index + 1 === data.length) ? lastItemStyle : containerStyle}>
-      <Image source={item.image} style={imageStyle} />
-      
-      <View style={textStyle}>
-        <Text style={{ color: '#2e2f30' }}>{item.name}</Text>
-        <View style={priceStyle}>
-          <Text style={{ color: '#2e2f30', fontSize: 12 }}>${item.price}</Text>
+      <View style={index + 1 === data.length ? lastItemStyle : containerStyle}>
+        <Image source={item.image} style={imageStyle} />
+
+        <View style={textStyle}>
+          <Text style={{ color: "#2e2f30" }}>{item.name}</Text>
+          <View style={priceStyle}>
+            <Text style={{ color: "#2e2f30", fontSize: 12 }}>
+              ${item.price}
+            </Text>
+          </View>
+        </View>
+
+        <View style={counterStyle}>
+          <Icon.Button
+            name="ios-remove"
+            size={25}
+            color="#fff"
+            backgroundColor="#fff"
+            style={{
+              borderRadius: 15,
+              backgroundColor: "#bbb",
+              height: 30,
+              width: 30
+            }}
+            iconStyle={{ marginRight: 0 }}
+          />
+
+          <Text>{item.amountTaken}</Text>
+
+          <Icon.Button
+            name="ios-add"
+            size={25}
+            color="#fff"
+            backgroundColor="#fff"
+            style={{
+              borderRadius: 15,
+              backgroundColor: "#bbb",
+              height: 30,
+              width: 30
+            }}
+            iconStyle={{ marginRight: 0 }}
+          />
         </View>
       </View>
-
-      <View style={counterStyle}>
-        <Icon.Button 
-          name="ios-remove" 
-          size={25} 
-          color='#fff' 
-          backgroundColor='#fff' 
-          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
-          iconStyle={{ marginRight: 0 }}
-        />
-
-        <Text>{item.amountTaken}</Text>
-
-        <Icon.Button 
-          name="ios-add" 
-          size={25} 
-          color='#fff' 
-          backgroundColor='#fff' 
-          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
-          iconStyle={{ marginRight: 0 }}
-        />
-
-      </View>
-    </View>);
+    );
   }
-
 
   render() {
     return (
       <FlatList
         data={data}
         renderItem={this._renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
       />
     );
   }
@@ -102,42 +118,42 @@ class Item extends Component {
 
 const styles = {
   containerStyle: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: '#e2e2e2',
+    borderColor: "#e2e2e2",
     padding: 10,
     paddingLeft: 15,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   },
   lastItemStyle: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
     padding: 10,
     paddingLeft: 15,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   },
   imageStyle: {
-    width: 50, 
-    height: 50, 
+    width: 50,
+    height: 50,
     marginRight: 20
   },
   textStyle: {
     flex: 2,
-    justifyContent: 'center'
+    justifyContent: "center"
   },
   priceStyle: {
-    backgroundColor: '#ddd',
+    backgroundColor: "#ddd",
     width: 40,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 3,
     borderRadius: 3
   },
   counterStyle: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center"
   }
 };
 

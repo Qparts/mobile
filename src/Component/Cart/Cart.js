@@ -1,23 +1,19 @@
-
-
-import React, {Component} from 'react';
-import {
-  View
-} from 'react-native';
-import Header from './cart-component/components/Header';
-import ItemsContainer from './cart-component/components/ItemsContainer';
-import BasketContainer from './cart-component/components/BasketComponent';
-import Footer from './cart-component/components/Footer';
+import React, { Component } from "react";
+import { View } from "react-native";
+import Header from "./cart-component/components/Header";
+import ItemsContainer from "./cart-component/components/ItemsContainer";
+import BasketContainer from "./cart-component/components/BasketComponent";
+import Footer from "./cart-component/components/Footer";
 
 class Cart extends Component {
-  render () {
+  render() {
     return (
       <View style={{ flex: 1 }}>
-      <Header />
-      <ItemsContainer />
-      <BasketContainer />
-      <Footer />
-    </View>
+        <Header />
+        <ItemsContainer />
+        <BasketContainer />
+        <Footer />
+      </View>
     );
   }
 }

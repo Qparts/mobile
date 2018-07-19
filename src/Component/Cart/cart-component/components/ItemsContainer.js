@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import Item from './Item';
+import React, { Component } from "react";
+import { View } from "react-native";
+import Item from "./Item";
 
 class ItemsContainer extends Component {
   render() {
@@ -15,9 +15,8 @@ class ItemsContainer extends Component {
 const styles = {
   containterStyle: {
     flex: 4,
-    backgroundColor: '#DCDCDC'
+    backgroundColor: "#DCDCDC"
   }
 };
 
 export default ItemsContainer;
-

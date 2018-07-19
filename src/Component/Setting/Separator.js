@@ -1,20 +1,20 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   separatorOffset: {
     flex: 2,
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   separator: {
     flex: 8,
-    flexDirection: 'row',
-    borderColor: '#EDEDED',
-    borderWidth: 0.8,
-  },
+    flexDirection: "row",
+    borderColor: "#EDEDED",
+    borderWidth: 0.8
+  }
 });
 
 const Separator = () => (

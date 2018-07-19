@@ -1,11 +1,11 @@
-import React from 'react';
-import { Text, TextInput, View, StyleSheet } from 'react-native';
+import React from "react";
+import { Text, TextInput, View, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems : 'center',
+    flexDirection: "row",
+    alignItems: "center",
     height: 40
   },
   label: {
@@ -14,17 +14,16 @@ const styles = StyleSheet.create({
     flex: 1
   },
   input: {
-    fontSize: 22,
-    color: '#000',
+    fontSize: 20,
+    color: "#000",
     paddingLeft: 5,
     paddingRight: 5,
     flex: 2,
-    paddingBottom: 10,
-   }
-
+    paddingBottom: 10
+  }
 });
 
-const Input = (props) => {
+const Input = props => {
   return (
     <View style={styles.inputContainer}>
       <Text style={styles.label}>{props.label}</Text>
@@ -33,12 +32,12 @@ const Input = (props) => {
         placeholder={props.placeholder}
         secureTextEntry={props.secureTextEntry}
         autoCorrect={false}
-        autoCapitalize='none'
+        autoCapitalize="none"
         onChangeText={props.onChangeText}
-        style={styles.input} />
+        style={styles.input}
+      />
     </View>
   );
 };
 
-
-export { Input }
+export { Input };
