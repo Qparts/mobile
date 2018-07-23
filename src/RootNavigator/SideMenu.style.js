@@ -1,13 +1,19 @@
 export default {
   container: {
     paddingTop: 20,
-    flex: 1
+    flex: 1,
+    backgroundColor:'#263445'
   },
   navItemStyle: {
-    padding: 10
+    padding: '5%',
+    color:'#ffffff',
+    borderBottomWidth:0.6,
+    borderColor:"#ffffff",
+    borderStyle: 'solid',
+
   },
   navSectionStyle: {
-    backgroundColor: "lightgrey"
+    backgroundColor: "#263445",
   },
   sectionHeadingStyle: {
     paddingVertical: 10,

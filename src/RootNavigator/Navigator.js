@@ -13,6 +13,7 @@ import Setting from "../Component/Setting";
 import Splash from "../Component/Splash/Splash";
 import Signup from "../Component/Signup/Signup";
 import ConfirmCode from "../Component/Signup/ConfirmCode/ConfirmCode";
+import AboutUs from '../Component/AboutUs/AboutUs';
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
 
@@ -29,6 +30,8 @@ const DrawerNavigator = createDrawerNavigator(
     },
     Setting: {
       screen: Setting
+    }, AboutUs: {
+      screen: AboutUs
     }
   },
   {
@@ -45,20 +48,24 @@ const MenuImage = ({ navigation }) => {
   }
   return <Image source={require("../Assets/img/left-arrow.png")} />;
 };
-
+const RightHeader = () => {
+  return <Image source={require("../Assets/img/shopping_cart.png")} />;
+};
 const StackNavigator = createStackNavigator(
   {
     Splash: {
       screen: Splash,
       navigationOptions: ({ navigation }) => ({
         title: "",
-        headerLeft: null
+        headerLeft: null,
+        headerRight: null
       })
     },
     Login: {
       screen: LoginForm,
       navigationOptions: ({ navigation }) => ({
         headerLeft: null,
+        headerRight: null,
         title: I18n.t("navigator_title_login")
       })
     },
@@ -74,13 +81,16 @@ const StackNavigator = createStackNavigator(
             <Image source={require("../Assets/img/left-arrow.png")} />
           </TouchableOpacity>
         ),
-        title: I18n.t("navigator_title_signup")
+        title: I18n.t("navigator_title_signup"),
+        headerRight: null
+
       })
     },
     ConfirmCode: {
       screen: ConfirmCode,
       navigationOptions: ({ navigation }) => ({
         headerLeft: null,
+        headerRight: null,
         title: I18n.t("navigator_title_confirmation_code")
       })
     },
@@ -103,6 +113,12 @@ const StackNavigator = createStackNavigator(
         >
           <MenuImage navigation={navigation} />
         </TouchableOpacity>
+      ),
+      headerRight:(
+        <TouchableOpacity
+       >
+        <RightHeader/>
+      </TouchableOpacity>
       ),
       headerStyle: {
         backgroundColor: "#333"

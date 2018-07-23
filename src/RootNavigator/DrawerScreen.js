@@ -21,9 +21,97 @@ class DrawerScreen extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <ScrollView>
-          <View>
+          <View style={styles.container}>
+          <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Garage
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+                Tyres
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Accessories
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Vendor
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Offers
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Blog
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "AboutUs",
+                  "About Us"
+                )}
+              >
+              About Us
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Contact Us
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              Track order
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+               Esay Returns
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+               Terms & Conditions
+              </Text>
+              </View>
+              <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+              >
+              return Policy
+              </Text>
+              </View>
             <View style={styles.navSectionStyle}>
               <Text
                 style={styles.navItemStyle}
@@ -77,7 +165,7 @@ class DrawerScreen extends Component {
         </ScrollView>
       </View>
     );
-  }
+  } 
 }
 
 DrawerScreen.propTypes = {
