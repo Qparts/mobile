@@ -13,7 +13,12 @@ import Setting from "../Component/Setting";
 import Splash from "../Component/Splash/Splash";
 import Signup from "../Component/Signup/Signup";
 import ConfirmCode from "../Component/Signup/ConfirmCode/ConfirmCode";
-import AboutUs from '../Component/AboutUs/AboutUs';
+import AboutUs from "../Component/AboutUs/AboutUs";
+import Garage from "../Component/Garage/Garage";
+import Tyres from "../Component/Tyres/Tyres";
+import Vendor from "../Component/Vendor/Vendor";
+import Offers from "../Component/Offers/Offers";
+import Blog from "../Component/Blog/Blog";
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
 
@@ -30,8 +35,19 @@ const DrawerNavigator = createDrawerNavigator(
     },
     Setting: {
       screen: Setting
-    }, AboutUs: {
+    },
+    AboutUs: {
       screen: AboutUs
+    },Garage: {
+      screen: Garage
+    },Tyres: {
+      screen: Tyres
+    },Vendor: {
+      screen: Vendor
+    },Offers: {
+      screen: Offers
+    },Blog: {
+      screen: Blog
     }
   },
   {
@@ -43,10 +59,10 @@ const DrawerNavigator = createDrawerNavigator(
 );
 
 const MenuImage = ({ navigation }) => {
-  if (!navigation.state.isDrawerOpen) {
-    return <Image source={require("../Assets/img/menu-button.png")} />;
-  }
-  return <Image source={require("../Assets/img/left-arrow.png")} />;
+  // if (!navigation.state.isDrawerOpen) {
+  //   return <Image source={require("../Assets/img/menu-button.png")} />;
+  // }
+  return <Image source={require("../Assets/img/menu-button.png")} />;
 };
 const RightHeader = () => {
   return <Image source={require("../Assets/img/shopping_cart.png")} />;
@@ -83,7 +99,6 @@ const StackNavigator = createStackNavigator(
         ),
         title: I18n.t("navigator_title_signup"),
         headerRight: null
-
       })
     },
     ConfirmCode: {
@@ -114,11 +129,10 @@ const StackNavigator = createStackNavigator(
           <MenuImage navigation={navigation} />
         </TouchableOpacity>
       ),
-      headerRight:(
-        <TouchableOpacity
-       >
-        <RightHeader/>
-      </TouchableOpacity>
+      headerRight: (
+        <TouchableOpacity>
+          <RightHeader />
+        </TouchableOpacity>
       ),
       headerStyle: {
         backgroundColor: "#333"

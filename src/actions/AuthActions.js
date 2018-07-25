@@ -4,7 +4,8 @@ import userControllers from "../providers/controllers/UsersAPIControllers";
 
 const onLoginSuccess = (dispatch, user, token) => {
   AsyncStorage.setItem("app_token", token).then(() => {
-    dispatch({ type: LOGIN_SUCCESS, user });
+    console.log(user);
+     dispatch({ type: LOGIN_SUCCESS, user });
   });
 };
 

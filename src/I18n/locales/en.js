@@ -19,6 +19,12 @@ export default {
   drawer_title_logout: "Logout",
   drawer_title_setting: "Settings",
   signup_handle_send_code: "Send Code",
+  drawer_title_Garage:'Garage',
+  drawer_title_Tyres:'Tyres',
+  drawer_title_Accessories:'Accessories',
+  drawer_title_Vendor:'Vendor',
+  drawer_title_Offers:'Offers',
+  drawer_title_Blog:'Blog',
   signup_error_pass_repass:
     "Your password and confirmation password do not match .",
   signup_error_email_notVaild: "email Not Valid.",
