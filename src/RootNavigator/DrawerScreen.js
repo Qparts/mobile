@@ -5,7 +5,7 @@ import { ScrollView, AsyncStorage, Text, View } from "react-native";
 import styles from "./SideMenu.style";
 import I18n from "../I18n";
 import Icon from "react-native-vector-icons/FontAwesome";
-import RNRestart from 'react-native-restart';
+import RNRestart from "react-native-restart";
 
 class DrawerScreen extends Component {
   navigateToScreen = (route, I18n_title) => () => {
@@ -28,74 +28,135 @@ class DrawerScreen extends Component {
         <ScrollView>
           <View style={styles.container}>
             <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}  onPress={this.navigateToScreen(
-                  "Garage",
-                  I18n.t("drawer_title_Garage")
-                )}>{  I18n.t("drawer_title_Garage")}</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}
-               onPress={this.navigateToScreen(
-                "Tyres",
-                I18n.t("drawer_title_Tyres")
-              )}>{I18n.t("drawer_title_Tyres")}</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}  onPress={this.navigateToScreen(
-                "Accessories",
-                I18n.t("drawer_title_Accessories")
-              )}>{I18n.t("drawer_title_Accessories")}</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}onPress={this.navigateToScreen(
-                "Vendor",
-                I18n.t("drawer_title_Vendor")
-              )}>{I18n.t("drawer_title_Vendor")}</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}onPress={this.navigateToScreen(
-                "Offers",
-                I18n.t("drawer_title_Offers")
-              )}>{ I18n.t("drawer_title_Offers")}</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}onPress={this.navigateToScreen(
-                "Blog",
-                I18n.t("drawer_title_Blog")
-              )}>{ I18n.t("drawer_title_Blog")}</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
               <Text
                 style={styles.navItemStyle}
-                onPress={this.navigateToScreen("AboutUs", "About Us")}
+                onPress={this.navigateToScreen(
+                  "Garage",
+                  I18n.t("drawer_title_Garage")
+                )}
               >
-                About Us
+                {I18n.t("drawer_title_Garage")}
               </Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}>Contact Us</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}>Track order</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}>Esay Returns</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}>Terms & Conditions</Text>
-            </View>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle}>return Policy</Text>
             </View>
             <View style={styles.navSectionStyle}>
               <Text
                 style={styles.navItemStyle}
                 onPress={this.navigateToScreen(
-                  "Home",
-                  I18n.t("drawer_title_home")
+                  "Tyres",
+                  I18n.t("drawer_title_Tyres")
                 )}
               >
-                {I18n.t("drawer_title_home")}
+                {I18n.t("drawer_title_Tyres")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "Accessories",
+                  I18n.t("drawer_title_Accessories")
+                )}
+              >
+                {I18n.t("drawer_title_Accessories")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "Vendor",
+                  I18n.t("drawer_title_Vendor")
+                )}
+              >
+                {I18n.t("drawer_title_Vendor")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "Offers",
+                  I18n.t("drawer_title_Offers")
+                )}
+              >
+                {I18n.t("drawer_title_Offers")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "Blog",
+                  I18n.t("drawer_title_Blog")
+                )}
+              >
+                {I18n.t("drawer_title_Blog")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "AboutUs",
+                  I18n.t("drawer_title_AboutUs")
+                )}
+              >
+                {I18n.t("drawer_title_AboutUs")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "ContactUs",
+                  I18n.t("drawer_title_ContactUs")
+                )}
+              >
+                {I18n.t("drawer_title_ContactUs")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "TrackOrder",
+                  I18n.t("drawer_title_TrackOrder")
+                )}
+              >
+                {I18n.t("drawer_title_TrackOrder")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "EsayReturns",
+                  I18n.t("drawer_title_EsayReturns")
+                )}
+              >
+                {I18n.t("drawer_title_EsayReturns")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "ReturnPolicy",
+                  I18n.t("drawer_title_ReturnPolicy")
+                )}
+              >
+                {I18n.t("drawer_title_ReturnPolicy")}
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
+                onPress={this.navigateToScreen(
+                  "TermsConditions",
+                  I18n.t("drawer_title_TermsConditions")
+                )}
+              >
+                {I18n.t("drawer_title_TermsConditions")}
               </Text>
             </View>
             <View style={styles.navSectionStyle}>

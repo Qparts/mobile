@@ -25,6 +25,12 @@ export default {
   drawer_title_Vendor:'Vendor',
   drawer_title_Offers:'Offers',
   drawer_title_Blog:'Blog',
+  drawer_title_AboutUs:'About Us',
+  drawer_title_ContactUs:'Contact Us',
+  drawer_title_TrackOrder:'Track Order',
+  drawer_title_EsayReturns:'Easy Returns',
+  drawer_title_TermsConditions:"Terms & Conditions",
+  drawer_title_ReturnPolicy:'Retuen Policy',
   signup_error_pass_repass:
     "Your password and confirmation password do not match .",
   signup_error_email_notVaild: "email Not Valid.",

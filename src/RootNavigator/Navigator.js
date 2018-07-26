@@ -19,6 +19,12 @@ import Tyres from "../Component/Tyres/Tyres";
 import Vendor from "../Component/Vendor/Vendor";
 import Offers from "../Component/Offers/Offers";
 import Blog from "../Component/Blog/Blog";
+import ContactUs from "../Component/ContactUs/ContactUs";
+import TrackOrder from "../Component/TrackOrder/TrackOrder";
+import EsayReturns from "../Component/EsayReturns/EsayReturns";
+import TermsConditions from "../Component/TermsConditions/TermsConditions";
+import ReturnPolicy from "../Component/ReturnPolicy/ReturnPolicy";
+import Accessories from "../Component/Accessories/Accessories";
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
 
@@ -48,6 +54,18 @@ const DrawerNavigator = createDrawerNavigator(
       screen: Offers
     },Blog: {
       screen: Blog
+    },ContactUs:{
+      screen: ContactUs
+    },TrackOrder:{
+      screen: TrackOrder
+    },EsayReturns:{
+      screen: EsayReturns
+    },TermsConditions:{
+      screen: TermsConditions
+    },ReturnPolicy:{
+      screen: ReturnPolicy
+    },Accessories:{
+      screen: Accessories
     }
   },
   {
