@@ -129,6 +129,7 @@ class LoginForm extends Component {
             label={I18n.t("login_input_email_label")}
             placeholder={I18n.t("login_input_email_placeholder")}
             secureTextEntry={false}
+            keyboardType='email-address'
             onChangeText={username => {
               this.setState({ username: username });
               username === ""

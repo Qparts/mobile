@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
     height: 40
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     paddingLeft: 20,
     flex: 1
   },
   input: {
-    fontSize: 20,
+    fontSize: 16,
     color: "#000",
     paddingLeft: 5,
     paddingRight: 5,
@@ -35,6 +35,8 @@ const Input = props => {
         autoCapitalize="none"
         onChangeText={props.onChangeText}
         style={styles.input}
+        autoCorrect={false}
+        keyboardType={props.keyboardType}
       />
     </View>
   );

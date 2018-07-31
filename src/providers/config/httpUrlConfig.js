@@ -13,7 +13,7 @@ export class httpUrlConfig {
   }
 
   getSignupUrl() {
-    return FakeAPI + api + "rest/login/signup/";
+    return FakeAPI + api + "login/signup/";
   }
 }
 export default httpUrlConfig;

@@ -3,10 +3,13 @@ import { Picker, Text, StyleSheet, TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Card, CardItem, Input, Button } from "../../common";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-// import userControllers from "../../providers/controllers/UsersAPIControllers";
+import userControllers from "../../providers/controllers/UsersAPIControllers";
 import I18n from "../../I18n";
 
 const styles = StyleSheet.create({
+  cardContainer: {
+    paddingBottom: "2%"
+  },
   inputContainer: {
     flex: 1,
     flexDirection: "row",
@@ -14,12 +17,12 @@ const styles = StyleSheet.create({
     height: 40
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     paddingLeft: 10,
     flex: 1
   },
   input: {
-    fontSize: 20,
+    fontSize: 16,
     color: "#000",
     paddingLeft: 5,
     paddingRight: 5,
@@ -43,13 +46,15 @@ class Signup extends Component {
       last_nameError: "",
       email: "",
       emailError: "",
-      country_id: "",
+      country_id: "1",
       phone_number: "",
       phone_numberError: "",
       password: "",
       passwordError: "",
       re_password: "",
-      re_passwordError: ""
+      re_passwordError: "",
+      countryCode: "",
+      countryCodeError: ""
     };
   }
 
@@ -61,34 +66,34 @@ class Signup extends Component {
     );
   }
   _onSignUpPressed() {
-    this.props.navigation.navigate("ConfirmCode", {
-      code: "asdasdas55656"
-    });
-    //  if(this.handleValidation()){
-
-    //   let user = {
-    //     first_name:this.state.first_name,
-    //     last_name:this.state.last_name,
-    //     email:this.state.email,
-    //     country_id:this.state.country_id,
-    //     phone_number:this.state.phone_number,
-    //     password:this.state.password,
-    //     re_password:this.state.re_password,
-    //   }
-    //      new userControllers().signup(user).then(res => {
-    //       if(JSON.stringify(res)){
-    //         this.props.navigation.navigate('ConfirmCode', {
-    //           code: 'asdasdas55656',
-    //          });
-    //      }
-    //    }).catch(err => {
-    //         if (err) {
-    //      console.error(error)
-    //       }
-    //      });
-    //  }
+    // this.props.navigation.navigate("ConfirmCode", {
+    //   code: "asdasdas55656"
+    // });
+     if(this.handleValidation()){
+      let user = {
+        firstName:this.state.first_name,
+        lastName:this.state.last_name,
+        email:this.state.email,
+        countryId:this.state.country_id,
+        mobile:this.state.phone_number,
+        password:this.state.password,
+        countryCode:this.state.countryCode,
+      }
+      new userControllers().signup(user).then(res => {
+          console.log("res"+res);
+          if(JSON.stringify(res)){
+            console.log(res);
+            // this.props.navigation.navigate('ConfirmCode', {
+            //   code: 'asdasdas55656',
+            //  });
+         }
+       }).catch(err => {
+            if (err) {
+         console.error(error)
+          }
+         });
+     }
   }
-
   handleValidation() {
     this.validation();
     if (this.state.first_name === "") {
@@ -105,6 +110,8 @@ class Signup extends Component {
           </Text>
         )
       });
+      return false;
+    } else if (this.state.countryCode === "") {
       return false;
     } else if (this.state.phone_number === "") {
       return false;
@@ -124,6 +131,7 @@ class Signup extends Component {
     }
     return true;
   }
+
   validation() {
     this.state.first_name === ""
       ? this.setState({
@@ -179,6 +187,15 @@ class Signup extends Component {
           )
         })
       : this.setState({ phone_numberError: null });
+    this.state.countryCode === ""
+      ? this.setState({
+          countryCodeError: (
+            <Text style={styles.errorStyle}>
+              {I18n.t("signup_error_CountryCode")}
+            </Text>
+          )
+        })
+      : this.setState({ countryCodeError: null });
   }
   validateEmail(value) {
     let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -249,48 +266,75 @@ class Signup extends Component {
             />
           </CardItem>
           <Text style={styles.errorStyle}>{this.state.emailError}</Text>
-          <CardItem>
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>{I18n.t("signup_input_country")}</Text>
+          <View style={styles.cardContainer}>
+            <CardItem>
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>
+                  {I18n.t("signup_input_country")}
+                </Text>
 
-              <Picker
-                style={styles.input}
-                selectedValue={this.state.country_id}
-                style={{ height: "70%", width: "50%" }}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.setState({ country_id: itemValue })
-                }
-              >
-                <Picker.Item label="السعودية" value="java" />
-                <Picker.Item label="الاردن" value="js" />
-              </Picker>
-            </View>
-          </CardItem>
-          <CardItem>
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>
-                {I18n.t("signup_input_phone_no_label")}
-              </Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder={I18n.t("signup_input_phone_no_placeholder")}
-                keyboardType={"phone-pad"}
-                onChangeText={phone_number => {
-                  this.setState({ phone_number: phone_number });
-                  phone_number === ""
+                <Picker
+                  style={styles.input}
+                  selectedValue={this.state.country_id}
+                  style={{ height: "70%", width: "50%" }}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({ country_id: itemValue })
+                  }
+                >
+                  <Picker.Item label="السعودية" value="1" />
+                  <Picker.Item label="الاردن" value="2" />
+                </Picker>
+              </View>
+            </CardItem>
+          </View>
+          <View style={styles.cardContainer}>
+            <CardItem>
+              <Input
+                label={I18n.t("signup_input_country_code")}
+                placeholder={I18n.t("signup_input_country_code_plaveholder")}
+                secureTextEntry={false}
+                onChangeText={countryCode => {
+                  this.setState({ countryCode: countryCode });
+                  countryCode === ""
                     ? this.setState({
-                        phone_numberError: (
+                        countryCodeError: (
                           <Text style={styles.errorStyle}>
-                            {I18n.t("signup_error_phone_no")}
+                            {I18n.t("signup_error_CountryCode")}
                           </Text>
                         )
                       })
-                    : this.setState({ phone_numberError: null });
+                    : this.setState({ countryCodeError: null });
                 }}
               />
-            </View>
-          </CardItem>
+            </CardItem>
+          </View>
+          <View style={styles.cardContainer}>
+            <CardItem>
+              <View style={styles.inputContainer}>
+                <Text style={styles.label}>
+                  {I18n.t("signup_input_phone_no_label")}
+                </Text>
+
+                <TextInput
+                  style={styles.input}
+                  placeholder={I18n.t("signup_input_phone_no_placeholder")}
+                  keyboardType={"phone-pad"}
+                  onChangeText={phone_number => {
+                    this.setState({ phone_number: phone_number });
+                    phone_number === ""
+                      ? this.setState({
+                          phone_numberError: (
+                            <Text style={styles.errorStyle}>
+                              {I18n.t("signup_error_phone_no")}
+                            </Text>
+                          )
+                        })
+                      : this.setState({ phone_numberError: null });
+                  }}
+                />
+              </View>
+            </CardItem>
+          </View>
           <Text style={styles.errorStyle}>{this.state.phone_numberError}</Text>
           <CardItem>
             <Input
@@ -333,7 +377,7 @@ class Signup extends Component {
           </CardItem>
           <Text style={styles.errorStyle}>{this.state.re_passwordError}</Text>
           <CardItem>{this._handleRenderSignup()}</CardItem>
-          <Icon.Button
+          {/* <Icon.Button
             name="facebook"
             backgroundColor="#3b5998"
             onPress={this.loginWithFacebook}
@@ -346,7 +390,7 @@ class Signup extends Component {
             onPress={this.loginWithFacebook}
           >
             {I18n.t("signup_with_twitter")}
-          </Icon.Button>
+          </Icon.Button> */}
         </Card>
       </KeyboardAwareScrollView>
     );

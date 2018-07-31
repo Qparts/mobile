@@ -32,7 +32,7 @@ export class UsersAPIControllers {
   }
   signup(body) {
     const FETCH_URL = new UrlAPIControllers().getSignupUrl();
-    return new HttpServiceConfig().post(FETCH_URL, body);
+    return new HttpServiceConfig().post(FETCH_URL, {customer:body});
   }
 }
 
