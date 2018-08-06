@@ -13,7 +13,22 @@ export class httpUrlConfig {
   }
 
   getSignupUrl() {
-    return FakeAPI + api + "login/signup/";
+    return FakeAPI + api + "signup/";
+  }
+  getCodeUrl() {
+    return FakeAPI + api + "email/";
+  }
+  getSocialMediaUrl(){
+    return FakeAPI + api + "login/social-media";
+  }
+  getRegSocialMediaUrl(){
+    return FakeAPI + api + "register/social-media";
+  }
+  getResetSmsMobileUrl(){
+    return FakeAPI + api + "reset-sms/mobile";
+  }
+  getResetPasswordMobileUrl(){
+    return FakeAPI + api + "reset-password";
   }
 }
 export default httpUrlConfig;

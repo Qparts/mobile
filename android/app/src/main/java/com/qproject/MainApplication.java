@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.magus.fblogin.FacebookLoginPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
@@ -30,7 +31,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNI18nPackage(),
             new RNGoogleSigninPackage(),
             new RNDeviceInfo(),
-            new ReactNativeRestartPackage()
+            new ReactNativeRestartPackage(),
+            new FacebookLoginPackage()
       );
     }
 

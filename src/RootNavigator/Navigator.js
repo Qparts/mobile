@@ -44,27 +44,38 @@ const DrawerNavigator = createDrawerNavigator(
     },
     AboutUs: {
       screen: AboutUs
-    },Garage: {
+    },
+    Garage: {
       screen: Garage
-    },Tyres: {
+    },
+    Tyres: {
       screen: Tyres
-    },Vendor: {
+    },
+    Vendor: {
       screen: Vendor
-    },Offers: {
+    },
+    Offers: {
       screen: Offers
-    },Blog: {
+    },
+    Blog: {
       screen: Blog
-    },ContactUs:{
+    },
+    ContactUs: {
       screen: ContactUs
-    },TrackOrder:{
+    },
+    TrackOrder: {
       screen: TrackOrder
-    },EsayReturns:{
+    },
+    EsayReturns: {
       screen: EsayReturns
-    },TermsConditions:{
+    },
+    TermsConditions: {
       screen: TermsConditions
-    },ReturnPolicy:{
+    },
+    ReturnPolicy: {
       screen: ReturnPolicy
-    },Accessories:{
+    },
+    Accessories: {
       screen: Accessories
     }
   },

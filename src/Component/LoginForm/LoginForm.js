@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, CardItem, Input, Button, Spinner } from "../../common";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
 import I18n from "../../I18n";
@@ -112,7 +112,6 @@ class LoginForm extends Component {
       </Button>
     );
   }
-
   render() {
     return (
       <Card>
@@ -129,7 +128,7 @@ class LoginForm extends Component {
             label={I18n.t("login_input_email_label")}
             placeholder={I18n.t("login_input_email_placeholder")}
             secureTextEntry={false}
-            keyboardType='email-address'
+            keyboardType="email-address"
             onChangeText={username => {
               this.setState({ username: username });
               username === ""
@@ -169,10 +168,11 @@ class LoginForm extends Component {
 
         <CardItem>{this._renderButton()}</CardItem>
         <CardItem>
-          <Text style={styles.orStyle} onPress={this._handleSignup.bind(this)}>
-            {I18n.t("login_handle_button_signup")}{" "}
-          </Text>
+          <Button onPress={this._handleSignup.bind(this)}>
+            {I18n.t("login_handle_button_signup")}
+          </Button>
         </CardItem>
+
         <Text style={styles.errorStyle}>{this.props.error}</Text>
       </Card>
     );

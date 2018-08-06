@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import { Picker, Text, StyleSheet, TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Card, CardItem, Input, Button } from "../../common";
+import {
+  GoogleSignin,
+  configure,
+  GoogleSigninButton
+} from "react-native-google-signin";
+import { FBLogin, FBLoginManager } from "react-native-facebook-login";
+
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import userControllers from "../../providers/controllers/UsersAPIControllers";
+import FBLoginView from '../../common/FBLoginView';
 import I18n from "../../I18n";
 
 const styles = StyleSheet.create({
@@ -69,30 +77,30 @@ class Signup extends Component {
     // this.props.navigation.navigate("ConfirmCode", {
     //   code: "asdasdas55656"
     // });
-     if(this.handleValidation()){
+    if (this.handleValidation()) {
       let user = {
-        firstName:this.state.first_name,
-        lastName:this.state.last_name,
-        email:this.state.email,
-        countryId:this.state.country_id,
-        mobile:this.state.phone_number,
-        password:this.state.password,
-        countryCode:this.state.countryCode,
-      }
-      new userControllers().signup(user).then(res => {
-          console.log("res"+res);
-          if(JSON.stringify(res)){
-            console.log(res);
-            // this.props.navigation.navigate('ConfirmCode', {
-            //   code: 'asdasdas55656',
-            //  });
-         }
-       }).catch(err => {
-            if (err) {
-         console.error(error)
+        firstName: this.state.first_name,
+        lastName: this.state.last_name,
+        email: this.state.email,
+        countryId: this.state.country_id,
+        mobile: this.state.phone_number,
+        password: this.state.password,
+        countryCode: this.state.countryCode
+      };
+      new userControllers()
+        .signup(user)
+        .then(res => {
+          console.log("res" + res);
+          if (JSON.stringify(res)) {
+            this.props.navigation.navigate('ConfirmCode');
           }
-         });
-     }
+        })
+        .catch(err => {
+          if (err) {
+            console.error(error);
+          }
+        });
+    }
   }
   handleValidation() {
     this.validation();
@@ -201,7 +209,21 @@ class Signup extends Component {
     let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(value);
   }
-
+  async _signIn() {
+    GoogleSignin.configure({
+      webClientId: "",
+      iosClientId: "",
+      offlineAccess: true,
+      forceConsentPrompt: true
+    }).then(() => {
+      GoogleSignin.signIn()
+        .then(this.handleGoogleLogin)
+        .catch(err => {
+          console.log("WRONG SIGNIN", err);
+        })
+        .done();
+    });
+  }
   render() {
     return (
       <KeyboardAwareScrollView>
@@ -377,6 +399,42 @@ class Signup extends Component {
           </CardItem>
           <Text style={styles.errorStyle}>{this.state.re_passwordError}</Text>
           <CardItem>{this._handleRenderSignup()}</CardItem>
+          <View>
+            <GoogleSigninButton
+              style={{ width: 48, height: 48 }}
+              size={GoogleSigninButton.Size.Icon}
+              color={GoogleSigninButton.Color.Dark}
+              onPress={() => this._signIn()}
+            />
+          </View>
+          <View>
+            <FBLogin
+              buttonView={<FBLoginView />}
+              ref={fbLogin => {
+                this.fbLogin = fbLogin;
+              }}
+              loginBehavior={FBLoginManager.LoginBehaviors.Native}
+              permissions={["email", "user_friends"]}
+              onLogin={function(e) {
+                console.log(e);
+              }}
+              onLoginFound={function(e) {
+                console.log(e);
+              }}
+              onLoginNotFound={function(e) {
+                console.log(e);
+              }}
+              onLogout={function(e) {
+                console.log(e);
+              }}
+              onCancel={function(e) {
+                console.log(e);
+              }}
+              onPermissionsMissing={function(e) {
+                console.log(e);
+              }}
+            />
+          </View>
           {/* <Icon.Button
             name="facebook"
             backgroundColor="#3b5998"

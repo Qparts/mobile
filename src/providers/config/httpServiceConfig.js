@@ -41,11 +41,6 @@ export class HttpServiceConfig {
         });
     });
   }
-
-  post2(apiUrl, body, config) {
-    return post(apiUrl, body, config);
-  }
-
   post(apiUrl, body, headers) {
     return new Promise(function(resolve, reject) {
       fetch(apiUrl, {
