@@ -25,6 +25,8 @@ import EsayReturns from "../Component/EsayReturns/EsayReturns";
 import TermsConditions from "../Component/TermsConditions/TermsConditions";
 import ReturnPolicy from "../Component/ReturnPolicy/ReturnPolicy";
 import Accessories from "../Component/Accessories/Accessories";
+import PasswordRecovery from "../Component/PasswordRecovery/PasswordRecovery";
+import ResetPasswrd from "../Component/ResetPassword/ResetPassword";
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
 
@@ -128,6 +130,30 @@ const StackNavigator = createStackNavigator(
         ),
         title: I18n.t("navigator_title_signup"),
         headerRight: null
+      })
+    },
+    PasswordRecovery: {
+      screen: PasswordRecovery,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
+            <Image source={require("../Assets/img/left-arrow.png")} />
+          </TouchableOpacity>
+        ),
+        title: "Password Recovey",
+        headerRight: null
+      })
+    },
+    ResetPasswrd: {
+      screen: ResetPasswrd,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: null,
+        headerRight: null,
+        title: "Reset Password"
       })
     },
     ConfirmCode: {

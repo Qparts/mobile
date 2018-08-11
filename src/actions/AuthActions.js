@@ -14,12 +14,7 @@ const onLoginFailed = (dispatch, errorMessage) => {
 };
 
 const handleResponse = (dispatch, data, token) => {
-  if (!data) {
-    data.message = "User Not Found";
-    onLoginFailed(dispatch, data.message);
-  } else {
     onLoginSuccess(dispatch, data, token);
-  }
 };
 export const loginUser = ({ username, password }) => {
   return dispatch => {
@@ -27,17 +22,18 @@ export const loginUser = ({ username, password }) => {
     new userControllers()
       .login({ email: username, password })
       .then(res => {
-        if (JSON.stringify(res.customer)) {
+         if (JSON.stringify(res.customer)) {
           handleResponse(
             dispatch,
             JSON.stringify(res.customer),
             JSON.stringify(res.token)
           );
+        }else {
+          onLoginFailed(dispatch, res[0]);
         }
       })
       .catch(err => {
-        if (err) {
-        }
+        onLoginFailed(dispatch,err);
       });
   };
 };
