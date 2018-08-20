@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Card, CardItem, Input, Button, Spinner } from "../../common";
-import { Text, View, Image, StyleSheet} from "react-native";
+import { Text, View, Image, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
 import I18n from "../../I18n";
- 
+import { Card, CardItem, Input, Button, Spinner } from "../../common";
+
 const styles = StyleSheet.create({
   errorStyle: {
     fontSize: 17,
@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
     width: 66,
     height: 58,
     borderRadius: 50
-  },passwordRecovery:{
+  },
+  passwordRecovery: {
     fontSize: 17,
     alignSelf: "center",
-    color: "rgb(42, 55, 68)",
-
+    color: "rgb(42, 55, 68)"
   }
 });
 
@@ -56,7 +56,7 @@ class LoginForm extends Component {
   _handleSignup() {
     this.props.navigation.navigate("signup");
   }
-  _handlePasswordRecovry(){
+  _handlePasswordRecovry() {
     this.props.navigation.navigate("PasswordRecovery");
   }
   _onLoginPressed() {
@@ -180,7 +180,12 @@ class LoginForm extends Component {
             {I18n.t("login_handle_button_signup")}
           </Button>
         </CardItem>
-        <Text onPress={this._handlePasswordRecovry.bind(this)}  style={styles.passwordRecovery}>Forgot account? </Text>
+        <Text
+          onPress={this._handlePasswordRecovry.bind(this)}
+          style={styles.passwordRecovery}
+        >
+          Forgot account?{" "}
+        </Text>
         <Text style={styles.errorStyle}>{this.props.error}</Text>
       </Card>
     );

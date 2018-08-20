@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { Picker, Text, StyleSheet, TextInput, View } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Card, CardItem, Input, Button } from "../../common";
 import {
   GoogleSignin,
-  configure,
   GoogleSigninButton
 } from "react-native-google-signin";
 import { FBLogin, FBLoginManager } from "react-native-facebook-login";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import userControllers from "../../providers/controllers/UsersAPIControllers";
-import FBLoginView from '../../common/FBLoginView';
+import FBLoginView from "../../common/FBLoginView";
 import I18n from "../../I18n";
 
 const styles = StyleSheet.create({
@@ -92,7 +90,7 @@ class Signup extends Component {
         .then(res => {
           console.log("res" + res);
           if (JSON.stringify(res)) {
-            this.props.navigation.navigate('ConfirmCode');
+            this.props.navigation.navigate("ConfirmCode");
           }
         })
         .catch(err => {

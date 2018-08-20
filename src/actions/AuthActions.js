@@ -4,7 +4,7 @@ import userControllers from "../providers/controllers/UsersAPIControllers";
 
 const onLoginSuccess = (dispatch, user, token) => {
   AsyncStorage.setItem("app_token", token).then(() => {
-    console.log(user);
+    AsyncStorage.setItem("user", user);
     dispatch({ type: LOGIN_SUCCESS, user });
   });
 };
@@ -14,7 +14,7 @@ const onLoginFailed = (dispatch, errorMessage) => {
 };
 
 const handleResponse = (dispatch, data, token) => {
-    onLoginSuccess(dispatch, data, token);
+  onLoginSuccess(dispatch, data, token);
 };
 export const loginUser = ({ username, password }) => {
   return dispatch => {
@@ -22,18 +22,18 @@ export const loginUser = ({ username, password }) => {
     new userControllers()
       .login({ email: username, password })
       .then(res => {
-         if (JSON.stringify(res.customer)) {
+        if (JSON.stringify(res.customer)) {
           handleResponse(
             dispatch,
             JSON.stringify(res.customer),
             JSON.stringify(res.token)
           );
-        }else {
+        } else {
           onLoginFailed(dispatch, res[0]);
         }
       })
       .catch(err => {
-        onLoginFailed(dispatch,err);
+        onLoginFailed(dispatch, err);
       });
   };
 };

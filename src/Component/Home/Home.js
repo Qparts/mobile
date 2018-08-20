@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, TextInput, Text, StyleSheet } from "react-native";
-import { Button , cardItem } from "../../common";
+import { Button } from "../../common";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     height: 45,
     borderColor: "#dfe3e8"
-  },buttonContainer:{
+  },
+  buttonContainer: {
     padding: 5,
     borderColor: "#ddd",
     borderBottomWidth: 1,
@@ -77,9 +78,9 @@ class Home extends Component {
           />
         </View>
         <View style={styles.buttonContainer}>
-         <Button style={styles.orderNowText}>Find</Button>
+          <Button style={styles.orderNowText}>Find</Button>
         </View>
-       </View>
+      </View>
     );
   }
 }

@@ -2,7 +2,8 @@ export default {
   container: {
     paddingTop: 20,
     flex: 1,
-    backgroundColor: "#263445"
+    backgroundColor: "#3c3c3c"
+    //  0d1721
   },
   navItemStyle: {
     padding: "5%",
@@ -12,7 +13,7 @@ export default {
     borderStyle: "solid"
   },
   navSectionStyle: {
-    backgroundColor: "#263445"
+    backgroundColor: "#3c3c3c"
   },
   navTextFollowUs: {
     paddingTop: "3%",
@@ -48,5 +49,23 @@ export default {
   footerContainer: {
     padding: 20,
     backgroundColor: "lightgrey"
+  },
+  storyCounters: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  imgstoryCounters: {
+    width: 25
+  },
+  iconCounter: {
+    fontSize: 30,
+    color: "#bbbbbb",
+    textAlign: "center"
+  },
+
+  iconCounterText: {
+    color: "#bbbbbb",
+    fontSize: 12,
+    textAlign: "center"
   }
 };

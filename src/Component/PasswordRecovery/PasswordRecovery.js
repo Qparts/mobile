@@ -6,9 +6,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     alignSelf: "center",
     color: "red"
-  },  cardItem: {
+  },
+  cardItem: {
     borderColor: "#ddd",
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   }
 });
 class PasswordRecovery extends Component {
@@ -59,15 +60,14 @@ class PasswordRecovery extends Component {
               please enter valid e-mail address, your account information will
               be mailed to you shortly
             </Text>
-            
-           </CardItem>
-            <View style={styles.cardItem}>
+          </CardItem>
+          <View style={styles.cardItem}>
             <TextInput
               placeholder="Email"
               secureTextEntry={false}
               autoCorrect={false}
               autoCapitalize="none"
-               onChangeText={email => {
+              onChangeText={email => {
                 this.setState({ email: email });
                 email === ""
                   ? this.setState({
@@ -80,8 +80,8 @@ class PasswordRecovery extends Component {
               autoCorrect={false}
               keyboardType="email-address"
             />
-              </View>
-           <Text style={styles.errorStyle}>{this.state.emailError}</Text>
+          </View>
+          <Text style={styles.errorStyle}>{this.state.emailError}</Text>
           <CardItem>
             <Button onPress={this.handleSend.bind(this)}>Send</Button>
           </CardItem>

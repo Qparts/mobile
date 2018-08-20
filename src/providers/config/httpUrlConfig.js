@@ -18,16 +18,16 @@ export class httpUrlConfig {
   getCodeUrl() {
     return FakeAPI + api + "email/";
   }
-  getSocialMediaUrl(){
+  getSocialMediaUrl() {
     return FakeAPI + api + "login/social-media";
   }
-  getRegSocialMediaUrl(){
+  getRegSocialMediaUrl() {
     return FakeAPI + api + "register/social-media";
   }
-  getResetSmsMobileUrl(){
+  getResetSmsMobileUrl() {
     return FakeAPI + api + "reset-sms/mobile";
   }
-  getResetPasswordMobileUrl(){
+  getResetPasswordMobileUrl() {
     return FakeAPI + api + "reset-password";
   }
 }

@@ -25,6 +25,7 @@ class ResetPasswrd extends Component {
 
   handleReset() {
     if (this.handleValidation()) {
+      this.props.navigation.navigate("VerifyEmail");
     }
   }
   handleValidation() {

@@ -2,8 +2,11 @@ import React from "react";
 import {
   createStackNavigator,
   DrawerActions,
-  createDrawerNavigator
+  createDrawerNavigator,
 } from "react-navigation";
+import PropTypes from "prop-types";
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import { TouchableOpacity, Image } from "react-native";
 import Home from "../Component/Home/Home";
 import Notification from "../Component/Notification/Notification";
@@ -27,9 +30,11 @@ import ReturnPolicy from "../Component/ReturnPolicy/ReturnPolicy";
 import Accessories from "../Component/Accessories/Accessories";
 import PasswordRecovery from "../Component/PasswordRecovery/PasswordRecovery";
 import ResetPasswrd from "../Component/ResetPassword/ResetPassword";
+import VerifyEmail from "../Component/VerifyEmail/VerifyEmail";
+
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
-
+ 
 const DrawerNavigator = createDrawerNavigator(
   {
     Home: {
@@ -88,15 +93,23 @@ const DrawerNavigator = createDrawerNavigator(
     drawerWidth: 300
   }
 );
-
+ 
 const MenuImage = ({ navigation }) => {
   // if (!navigation.state.isDrawerOpen) {
   //   return <Image source={require("../Assets/img/menu-button.png")} />;
   // }
-  return <Image source={require("../Assets/img/menu-button.png")} />;
+  return (
+    <Image
+      style={{ marginLeft: 5 }}
+      source={require("../Assets/img/menu-button.png")}
+    />
+  );
 };
+
 const RightHeader = () => {
-  return <Image source={require("../Assets/img/shopping_cart.png")} />;
+     return (
+    <Icon name="shopping-cart" style={{ marginRight: 10}} size={35} color="#999" />
+  );
 };
 const StackNavigator = createStackNavigator(
   {
@@ -120,10 +133,12 @@ const StackNavigator = createStackNavigator(
       screen: Signup,
       navigationOptions: ({ navigation }) => ({
         headerLeft: (
+          // style={marginRight:'30%'},
           <TouchableOpacity
             onPress={() => {
               navigation.goBack();
             }}
+            style={{ marginLeft: 5 }}
           >
             <Image source={require("../Assets/img/left-arrow.png")} />
           </TouchableOpacity>
@@ -140,6 +155,7 @@ const StackNavigator = createStackNavigator(
             onPress={() => {
               navigation.goBack();
             }}
+            style={{ marginLeft: 5 }}
           >
             <Image source={require("../Assets/img/left-arrow.png")} />
           </TouchableOpacity>
@@ -154,6 +170,14 @@ const StackNavigator = createStackNavigator(
         headerLeft: null,
         headerRight: null,
         title: "Reset Password"
+      })
+    },
+    VerifyEmail: {
+      screen: VerifyEmail,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: null,
+        headerRight: null,
+        title: "Verify Email"
       })
     },
     ConfirmCode: {
@@ -186,7 +210,7 @@ const StackNavigator = createStackNavigator(
       ),
       headerRight: (
         <TouchableOpacity>
-          <RightHeader />
+          <RightHeader  navigation={navigation}/>
         </TouchableOpacity>
       ),
       headerStyle: {
@@ -199,5 +223,7 @@ const StackNavigator = createStackNavigator(
     })
   }
 );
-
+StackNavigator.propTypes = {
+  navigation: PropTypes.object
+};
 export default StackNavigator;

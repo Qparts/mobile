@@ -2,12 +2,28 @@ import React, { Component } from "react";
 import { NavigationActions, DrawerActions } from "react-navigation";
 import PropTypes from "prop-types";
 import { ScrollView, AsyncStorage, Text, View } from "react-native";
-import styles from "./SideMenu.style";
-import I18n from "../I18n";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RNRestart from "react-native-restart";
+import { connect } from "react-redux";
+import styles from "./SideMenu.style";
+import I18n from "../I18n";
 
 class DrawerScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: []
+    };
+  }
+  componentDidMount() {
+    AsyncStorage.getItem("user").then(user => {
+      if (user) {
+        this.setState({
+          user: JSON.parse(user)
+        });
+      }
+    });
+  }
   navigateToScreen = (route, I18n_title) => () => {
     const navigateAction = NavigationActions.navigate({
       routeName: route
@@ -27,6 +43,14 @@ class DrawerScreen extends Component {
       <View>
         <ScrollView>
           <View style={styles.container}>
+            <View style={styles.storyCounters}>
+              <View style={styles.imgstoryCounters}>
+                <Icon name="user" style={styles.iconCounter} />
+                <Text style={styles.iconCounterText}>
+                  {this.state.user.firstName}
+                </Text>
+              </View>
+            </View>
             <View style={styles.navSectionStyle}>
               <Text
                 style={styles.navItemStyle}
@@ -197,17 +221,17 @@ class DrawerScreen extends Component {
                 {I18n.t("drawer_title_setting")}
               </Text>
             </View>
-            <View style={styles.navSectionStyle}>
+            {/* <View style={styles.navSectionStyle}>
               <Text style={styles.navTextFollowUs}>Follow Us @</Text>
-            </View>
-            <View style={styles.containerbutton}>
+            </View> */}
+            {/* <View style={styles.containerbutton}>
               <View style={styles.navButtonFacebook}>
                 <Icon.Button name="facebook" />
               </View>
               <View style={styles.navButtonTwitter}>
                 <Icon.Button name="twitter" backgroundColor="#37d1fc" />
               </View>
-            </View>
+            </View> */}
           </View>
         </ScrollView>
       </View>
@@ -218,5 +242,11 @@ class DrawerScreen extends Component {
 DrawerScreen.propTypes = {
   navigation: PropTypes.object
 };
-
-export default DrawerScreen;
+const mapStateToProps = state => {
+  return {
+    error: state.auth.error,
+    loading: state.auth.loading,
+    user: state.auth.user
+  };
+};
+export default connect(mapStateToProps)(DrawerScreen);
