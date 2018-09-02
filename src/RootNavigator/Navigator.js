@@ -2,10 +2,10 @@ import React from "react";
 import {
   createStackNavigator,
   DrawerActions,
-  createDrawerNavigator,
+  createDrawerNavigator
 } from "react-navigation";
 import PropTypes from "prop-types";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import { TouchableOpacity, Image } from "react-native";
 import Home from "../Component/Home/Home";
@@ -31,10 +31,11 @@ import Accessories from "../Component/Accessories/Accessories";
 import PasswordRecovery from "../Component/PasswordRecovery/PasswordRecovery";
 import ResetPasswrd from "../Component/ResetPassword/ResetPassword";
 import VerifyEmail from "../Component/VerifyEmail/VerifyEmail";
+import Wizard from "../Component/Wizard/Wizard";
 
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
- 
+
 const DrawerNavigator = createDrawerNavigator(
   {
     Home: {
@@ -93,7 +94,7 @@ const DrawerNavigator = createDrawerNavigator(
     drawerWidth: 300
   }
 );
- 
+
 const MenuImage = ({ navigation }) => {
   // if (!navigation.state.isDrawerOpen) {
   //   return <Image source={require("../Assets/img/menu-button.png")} />;
@@ -107,20 +108,34 @@ const MenuImage = ({ navigation }) => {
 };
 
 const RightHeader = () => {
-     return (
-    <Icon name="shopping-cart" style={{ marginRight: 10}} size={35} color="#999" />
+  return (
+    <Icon
+      name="shopping-cart"
+      style={{ marginRight: 10 }}
+      size={35}
+      color="#999"
+    />
   );
 };
 const StackNavigator = createStackNavigator(
   {
-    Splash: {
-      screen: Splash,
+    Wizard: {
+      screen: Wizard,
+      headerMode: "none",
+      header: null,
+      headerTintColor: '#000000',
       navigationOptions: ({ navigation }) => ({
-        title: "",
-        headerLeft: null,
-        headerRight: null
+        header: null
       })
     },
+    // Splash: {
+    //   screen: Splash,
+    //   navigationOptions: ({ navigation }) => ({
+    //     title: "",
+    //     headerLeft: null,
+    //     headerRight: null
+    //   })
+    // },
     Login: {
       screen: LoginForm,
       navigationOptions: ({ navigation }) => ({
@@ -210,7 +225,7 @@ const StackNavigator = createStackNavigator(
       ),
       headerRight: (
         <TouchableOpacity>
-          <RightHeader  navigation={navigation}/>
+          <RightHeader navigation={navigation} />
         </TouchableOpacity>
       ),
       headerStyle: {

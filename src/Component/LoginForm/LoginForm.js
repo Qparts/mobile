@@ -60,10 +60,12 @@ class LoginForm extends Component {
     this.props.navigation.navigate("PasswordRecovery");
   }
   _onLoginPressed() {
-    const { username, password } = this.state;
-    if (this.handleValidation()) {
-      this.props.loginUser({ username, password });
-    }
+    // const { username, password } = this.state;
+    // if (this.handleValidation()) {
+    //   this.props.loginUser({ username, password });
+    // }
+    this.props.navigation.navigate("Dashboard");
+
   }
 
   handleValidation() {

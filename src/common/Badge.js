@@ -4,8 +4,8 @@ import React, { Component } from "react";
 const styles = StyleSheet.create({
   badge: {
     padding: 5,
-    minWidth: 30,
-    height: 30,
+    minWidth: 10,
+    height: 10,
     borderRadius: 20,
     backgroundColor: "#FF0000",
     justifyContent: "center",
@@ -18,19 +18,15 @@ const styles = StyleSheet.create({
   },
   badgeContainer: {
     flex: -1,
-    flexDirection: "row"
+    flexDirection: "row",
+    paddingLeft:'2%'
   }
 });
 
 const Badge = props => {
-  if (props.color) {
-    styles.badge.color = props.color;
-  } else {
-    color = "#ff0000";
-  }
   return (
     <View style={styles.badgeContainer}>
-      <Text style={styles.badge}>{props.value}</Text>
+      <Text style={[styles.badge,{backgroundColor:props.color}]}>{props.value}</Text>
     </View>
   );
 };
