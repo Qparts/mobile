@@ -7,10 +7,8 @@ import {
   StyleSheet,
   Image
 } from "react-native";
- import { Badge } from "../../common";
- import {
-  NavigationActions,
- } from "react-navigation";
+import { Badge } from "../../common";
+import { NavigationActions } from "react-navigation";
 
 var { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -28,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   addVechleText: {
-    color: "#47525e",
+    color: "#909090",
     fontSize: 18,
     fontWeight: "bold",
     paddingTop: "4%"
@@ -63,8 +61,8 @@ class Setp1 extends Component {
     evt.preventDefault();
     this.props.onPress();
   }
-  handleOnSkip(){
-     this.props.onSkip.navigation.navigate("Login");
+  handleOnSkip() {
+    this.props.onSkip.navigation.navigate("Home");
   }
 
   render() {
@@ -95,7 +93,7 @@ class Setp1 extends Component {
         </View>
         <View style={styles.footerContainer}>
           <View style={styles.SkipText}>
-            <TouchableOpacity onPress={()=>this.handleOnSkip()}>
+            <TouchableOpacity onPress={() => this.handleOnSkip()}>
               <Text> Skip </Text>
             </TouchableOpacity>
           </View>
@@ -127,9 +125,9 @@ class Setp2 extends Component {
     evt.preventDefault();
     this.props.onPress();
   }
-  handleOnSkip(){
-    this.props.onSkip.navigation.navigate("Login");
- }
+  handleOnSkip() {
+    this.props.onSkip.navigation.navigate("Home");
+  }
   render() {
     return (
       <View style={styles.wizardContainer}>
@@ -158,7 +156,7 @@ class Setp2 extends Component {
         </View>
         <View style={styles.footerContainer}>
           <View style={styles.SkipText}>
-          <TouchableOpacity onPress={()=>this.handleOnSkip()}>
+            <TouchableOpacity onPress={() => this.handleOnSkip()}>
               <Text> Skip </Text>
             </TouchableOpacity>
           </View>
@@ -190,9 +188,9 @@ class Step3 extends Component {
     evt.preventDefault();
     this.props.onPress();
   }
-  handleOnSkip(){
-    this.props.onSkip.navigation.navigate("Login");
- }
+  handleOnSkip() {
+    this.props.onSkip.navigation.navigate("Home");
+  }
   render() {
     return (
       <View style={styles.wizardContainer}>
@@ -224,7 +222,7 @@ class Step3 extends Component {
         </View>
         <View style={styles.footerContainer}>
           <View style={styles.SkipText}>
-          <TouchableOpacity onPress={()=>this.handleOnSkip()}>
+            <TouchableOpacity onPress={() => this.handleOnSkip()}>
               <Text> Skip </Text>
             </TouchableOpacity>
           </View>
@@ -255,9 +253,9 @@ class Step4 extends Component {
     evt.preventDefault();
     this.props.onPress();
   }
-  handleOnSkip(){
-    this.props.onSkip.navigation.navigate("Login");
- }
+  handleOnSkip() {
+    this.props.onSkip.navigation.navigate("Home");
+  }
   render() {
     return (
       <View style={styles.wizardContainer}>
@@ -315,20 +313,28 @@ class Wizard extends Component {
     if (step !== 4) {
       this.setState({ step: step + 1 });
     } else {
-      this.props.navigation.navigate("Login");
+      this.props.navigation.navigate("Home");
     }
   }
 
   render() {
     switch (this.state.step) {
       case 1:
-        return <Setp1 onSkip={this.props} key="Step 1" onPress={this.goToNext} />;
+        return (
+          <Setp1 onSkip={this.props} key="Step 1" onPress={this.goToNext} />
+        );
       case 2:
-        return <Setp2 onSkip={this.props} key="Step 2" onPress={this.goToNext} />;
+        return (
+          <Setp2 onSkip={this.props} key="Step 2" onPress={this.goToNext} />
+        );
       case 3:
-        return <Step3 onSkip={this.props}  key="Step 3" onPress={this.goToNext} />;
+        return (
+          <Step3 onSkip={this.props} key="Step 3" onPress={this.goToNext} />
+        );
       case 4:
-        return <Step4 onSkip={this.props} key="Step 4" onPress={this.goToNext} />;
+        return (
+          <Step4 onSkip={this.props} key="Step 4" onPress={this.goToNext} />
+        );
     }
   }
 }

@@ -27,7 +27,7 @@ class Splash extends Component {
       if (token) {
         this._navigate("Dashboard");
       } else {
-        this._navigate("Login");
+        this._navigate("LoginProfile");
       }
     });
   }

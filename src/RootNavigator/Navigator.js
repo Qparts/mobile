@@ -32,12 +32,22 @@ import PasswordRecovery from "../Component/PasswordRecovery/PasswordRecovery";
 import ResetPasswrd from "../Component/ResetPassword/ResetPassword";
 import VerifyEmail from "../Component/VerifyEmail/VerifyEmail";
 import Wizard from "../Component/Wizard/Wizard";
+import LoginProfile from "../Component/LoginProfile/LoginProfile";
 
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
 
 const DrawerNavigator = createDrawerNavigator(
   {
+    Wizard: {
+      screen: Wizard,
+      headerMode: "none",
+      header: null,
+      headerTintColor: "#000000",
+      navigationOptions: ({ navigation }) => ({
+        header: null
+      })
+    },
     Home: {
       screen: Home
     },
@@ -119,36 +129,43 @@ const RightHeader = () => {
 };
 const StackNavigator = createStackNavigator(
   {
-    Wizard: {
-      screen: Wizard,
+    Splash: {
+      screen: Splash,
+      navigationOptions: ({ navigation }) => ({
+        title: "",
+        headerLeft: null,
+        headerRight: null
+      })
+    },
+    LoginProfile: {
+      screen: LoginProfile,
       headerMode: "none",
       header: null,
-      headerTintColor: '#000000',
+      headerTintColor: "#000000",
       navigationOptions: ({ navigation }) => ({
         header: null
       })
     },
-    // Splash: {
-    //   screen: Splash,
-    //   navigationOptions: ({ navigation }) => ({
-    //     title: "",
-    //     headerLeft: null,
-    //     headerRight: null
-    //   })
-    // },
     Login: {
       screen: LoginForm,
+      headerMode: "none",
+      header: null,
+      headerTintColor: "#000000",
       navigationOptions: ({ navigation }) => ({
-        headerLeft: null,
-        headerRight: null,
-        title: I18n.t("navigator_title_login")
+        header: null
       })
     },
     signup: {
       screen: Signup,
+      header: null,
+      headerTintColor: "#000000",
       navigationOptions: ({ navigation }) => ({
+        title: null,
+        headerRight: null,
+        headerStyle: {
+          backgroundColor: "#ffffff"
+        },
         headerLeft: (
-          // style={marginRight:'30%'},
           <TouchableOpacity
             onPress={() => {
               navigation.goBack();
@@ -157,14 +174,19 @@ const StackNavigator = createStackNavigator(
           >
             <Image source={require("../Assets/img/left-arrow.png")} />
           </TouchableOpacity>
-        ),
-        title: I18n.t("navigator_title_signup"),
-        headerRight: null
+        )
       })
     },
     PasswordRecovery: {
       screen: PasswordRecovery,
+      header: null,
+      headerTintColor: "#000000",
       navigationOptions: ({ navigation }) => ({
+        title: null,
+        headerRight: null,
+        headerStyle: {
+          backgroundColor: "#ffffff"
+        },
         headerLeft: (
           <TouchableOpacity
             onPress={() => {
@@ -174,9 +196,7 @@ const StackNavigator = createStackNavigator(
           >
             <Image source={require("../Assets/img/left-arrow.png")} />
           </TouchableOpacity>
-        ),
-        title: "Password Recovey",
-        headerRight: null
+        )
       })
     },
     ResetPasswrd: {
@@ -197,10 +217,24 @@ const StackNavigator = createStackNavigator(
     },
     ConfirmCode: {
       screen: ConfirmCode,
+      header: null,
+      headerTintColor: "#000000",
       navigationOptions: ({ navigation }) => ({
-        headerLeft: null,
+        title: null,
         headerRight: null,
-        title: I18n.t("navigator_title_confirmation_code")
+        headerStyle: {
+          backgroundColor: "#ffffff"
+        },
+        headerLeft: (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={{ marginLeft: 5 }}
+          >
+            <Image source={require("../Assets/img/left-arrow.png")} />
+          </TouchableOpacity>
+        )
       })
     },
     Dashboard: {
