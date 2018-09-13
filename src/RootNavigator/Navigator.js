@@ -2,7 +2,8 @@ import React from "react";
 import {
   createStackNavigator,
   DrawerActions,
-  createDrawerNavigator
+  createDrawerNavigator,
+  createBottomTabNavigator
 } from "react-navigation";
 import PropTypes from "prop-types";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -24,6 +25,7 @@ import Offers from "../Component/Offers/Offers";
 import Blog from "../Component/Blog/Blog";
 import ContactUs from "../Component/ContactUs/ContactUs";
 import TrackOrder from "../Component/TrackOrder/TrackOrder";
+import CustomOrder from "../Component/CustomOrder/CustomOrder";
 import EsayReturns from "../Component/EsayReturns/EsayReturns";
 import TermsConditions from "../Component/TermsConditions/TermsConditions";
 import ReturnPolicy from "../Component/ReturnPolicy/ReturnPolicy";
@@ -33,9 +35,58 @@ import ResetPasswrd from "../Component/ResetPassword/ResetPassword";
 import VerifyEmail from "../Component/VerifyEmail/VerifyEmail";
 import Wizard from "../Component/Wizard/Wizard";
 import LoginProfile from "../Component/LoginProfile/LoginProfile";
+import ShipmentCity from "../Component/ShipmentCity/ShipmentCity";
 
 import DrawerScreen from "./DrawerScreen";
 import I18n from "../I18n";
+const Tabs = createBottomTabNavigator(
+  {
+    Home: {
+      screen: Home
+    },
+    ReturnPolicy: {
+      screen: ReturnPolicy
+    },
+    CustomOrder: {
+      screen: CustomOrder
+    },
+    Cart: {
+      screen: Cart
+    },
+    Setting: {
+      screen: Setting
+    }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+
+        if (routeName === "Home") {
+          iconName = "home";
+        } else if (routeName === "ReturnPolicy") {
+          iconName = "print";
+        } else if (routeName === "CustomOrder") {
+          iconName = "clone";
+        } else if (routeName === "Cart") {
+          iconName = "shopping-cart";
+        } else if (routeName === "Setting") {
+          iconName = "user";
+        }
+        return <Icon name={iconName} size={25} color={tintColor} />;
+      }
+    }),
+    initialRouteName: "CustomOrder",
+    tabBarOptions: {
+      showLabel: false,
+      labelStyle: {
+        fontSize: 12
+      },
+      order: ["Home", "ReturnPolicy", "CustomOrder", "Cart", "Setting"]
+    }
+  }
+);
 
 const DrawerNavigator = createDrawerNavigator(
   {
@@ -49,7 +100,7 @@ const DrawerNavigator = createDrawerNavigator(
       })
     },
     Home: {
-      screen: Home
+      screen: Tabs
     },
     Notification: {
       screen: Notification

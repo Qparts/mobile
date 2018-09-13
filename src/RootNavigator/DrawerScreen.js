@@ -54,6 +54,14 @@ class DrawerScreen extends Component {
             <View style={styles.navSectionStyle}>
               <Text
                 style={styles.navItemStyle}
+                onPress={this.navigateToScreen("Home","Home")}
+              >
+                Home
+              </Text>
+            </View>
+            <View style={styles.navSectionStyle}>
+              <Text
+                style={styles.navItemStyle}
                 onPress={this.navigateToScreen(
                   "Garage",
                   I18n.t("drawer_title_Garage")

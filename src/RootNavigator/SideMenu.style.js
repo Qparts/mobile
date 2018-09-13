@@ -3,7 +3,6 @@ export default {
     paddingTop: 20,
     flex: 1,
     backgroundColor: "#3c3c3c"
-    //  0d1721
   },
   navItemStyle: {
     padding: "5%",
@@ -62,7 +61,6 @@ export default {
     color: "#bbbbbb",
     textAlign: "center"
   },
-
   iconCounterText: {
     color: "#bbbbbb",
     fontSize: 12,
