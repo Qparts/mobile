@@ -8,6 +8,7 @@ import {
   Image
 } from "react-native";
 import { Badge } from "../../common";
+import I18n from "../../I18n";
 import { NavigationActions } from "react-navigation";
 
 var { width, height } = Dimensions.get("window");
@@ -77,16 +78,20 @@ class Setp1 extends Component {
               />
             </View>
             <View>
-              <Text style={styles.addVechleText}>ADD VECHLE</Text>
+              <Text style={styles.addVechleText}>
+                {I18n.t("wizard_add_vechle")}
+              </Text>
             </View>
             <View>
-              <Text style={styles.inYourText}>IN YOUR GARAGE</Text>
+              <Text style={styles.inYourText}>
+                {I18n.t("wizard_in_your_garage")}
+              </Text>
             </View>
             <View>
-              <Text>View manage and find parts for the </Text>
+              <Text>{I18n.t("wizard_view_manage")} </Text>
             </View>
             <View>
-              <Text>vehicles in your garage </Text>
+              <Text>{I18n.t("wizard_vehicles_in")} </Text>
             </View>
           </View>
           <View />
@@ -94,7 +99,7 @@ class Setp1 extends Component {
         <View style={styles.footerContainer}>
           <View style={styles.SkipText}>
             <TouchableOpacity onPress={() => this.handleOnSkip()}>
-              <Text> Skip </Text>
+              <Text> {I18n.t("wizard_skip")} </Text>
             </TouchableOpacity>
           </View>
           <View
@@ -107,7 +112,7 @@ class Setp1 extends Component {
           </View>
           <View style={styles.nextText}>
             <TouchableOpacity onPress={e => this.handleOnPress(e)}>
-              <Text> Next </Text>
+              <Text> {I18n.t("wizard_next")} </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -140,16 +145,20 @@ class Setp2 extends Component {
               />
             </View>
             <View>
-              <Text style={styles.addVechleText}>SEARCH</Text>
+              <Text style={styles.addVechleText}>
+                {I18n.t("wizard_search")}
+              </Text>
             </View>
             <View>
-              <Text style={styles.inYourText}>Find Part Of Product</Text>
+              <Text style={styles.inYourText}>
+                {I18n.t("wizard_find_part")}
+              </Text>
             </View>
             <View>
-              <Text>Search for vechile part,Tyre,Motor Oil </Text>
+              <Text>{I18n.t("wizard_search_for_vechile")} </Text>
             </View>
             <View>
-              <Text>Tools Or Accessories </Text>
+              <Text>{I18n.t("wizard_tools")} </Text>
             </View>
           </View>
           <View />
@@ -157,7 +166,7 @@ class Setp2 extends Component {
         <View style={styles.footerContainer}>
           <View style={styles.SkipText}>
             <TouchableOpacity onPress={() => this.handleOnSkip()}>
-              <Text> Skip </Text>
+              <Text> {I18n.t("wizard_skip")} </Text>
             </TouchableOpacity>
           </View>
           <View
@@ -170,7 +179,7 @@ class Setp2 extends Component {
           </View>
           <View style={styles.nextText}>
             <TouchableOpacity onPress={e => this.handleOnPress(e)}>
-              <Text> Next </Text>
+              <Text> {I18n.t("wizard_next")} </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -203,19 +212,23 @@ class Step3 extends Component {
               />
             </View>
             <View>
-              <Text style={styles.addVechleText}>CUSTOM ORDER</Text>
+              <Text style={styles.addVechleText}>
+                {I18n.t("wizard_custom_order")}
+              </Text>
             </View>
             <View>
-              <Text style={styles.inYourText}>Just Send request </Text>
+              <Text style={styles.inYourText}>
+                {I18n.t("wizard_just_send_request")}
+              </Text>
             </View>
             <View>
-              <Text>Till us your vechile data and </Text>
+              <Text>{I18n.t("wizard_till_us_your")} </Text>
             </View>
             <View>
-              <Text>the part you want,and we will replay </Text>
+              <Text>{I18n.t("wizard_the_part_you")} </Text>
             </View>
             <View>
-              <Text>by the price and details</Text>
+              <Text>{I18n.t("wizard_by_the")}</Text>
             </View>
           </View>
           <View />
@@ -223,7 +236,7 @@ class Step3 extends Component {
         <View style={styles.footerContainer}>
           <View style={styles.SkipText}>
             <TouchableOpacity onPress={() => this.handleOnSkip()}>
-              <Text> Skip </Text>
+              <Text> {I18n.t("wizard_skip")} </Text>
             </TouchableOpacity>
           </View>
           <View
@@ -236,7 +249,7 @@ class Step3 extends Component {
           </View>
           <View style={styles.nextText}>
             <TouchableOpacity onPress={e => this.handleOnPress(e)}>
-              <Text> Next </Text>
+              <Text> {I18n.t("wizard_next")} </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -268,13 +281,17 @@ class Step4 extends Component {
               />
             </View>
             <View>
-              <Text style={styles.addVechleText}>IN HOUSE EXPERTS</Text>
+              <Text style={styles.addVechleText}>
+                {I18n.t("wizard_in_house")}
+              </Text>
             </View>
             <View>
-              <Text style={styles.inYourText}>If you Have a Question</Text>
+              <Text style={styles.inYourText}>
+                {I18n.t("wizard_if_you_have")}
+              </Text>
             </View>
             <View>
-              <Text>ask a Speciails e know our product </Text>
+              <Text>{I18n.t("wizard_ask_a")} </Text>
             </View>
           </View>
           <View />
@@ -290,7 +307,7 @@ class Step4 extends Component {
           </View>
           <View style={styles.nextText}>
             <TouchableOpacity onPress={() => this.handleOnSkip()}>
-              <Text> GOT IT </Text>
+              <Text> {I18n.t("wizard_got")} </Text>
             </TouchableOpacity>
           </View>
         </View>

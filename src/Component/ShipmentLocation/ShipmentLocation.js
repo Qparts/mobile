@@ -8,6 +8,7 @@ import {
   Image
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import I18n from "../../I18n";
 
 var { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -75,25 +76,32 @@ class ShipmentLocation extends Component {
               />
             </View>
             <View>
-              <Text style={styles.niceTo}>Hi, nice to meet you</Text>
-            </View>
-            <View>
-              <Text style={styles.chooseYour}>
-                choose your shipment location to
+              <Text style={styles.niceTo}>
+                {I18n.t("shipment_location_hi_nice")}
               </Text>
             </View>
             <View>
-              <Text style={styles.chooseYour}>show the price</Text>
+              <Text style={styles.chooseYour}>
+                {I18n.t("shipment_location_choose_your")}
+              </Text>
+            </View>
+            <View>
+              <Text style={styles.chooseYour}>
+                {I18n.t("shipment_location_show_the")}
+              </Text>
             </View>
             <View style={styles.buttonContainer}>
               <TouchableOpacity style={styles.buttonStyle}>
                 <Text style={styles.buttonText}>
-                  <Icon size={18} name="md-locate" /> User current Location
+                  <Icon size={18} name="md-locate" />
+                  {I18n.t("shipment_location_user_current")}
                 </Text>
               </TouchableOpacity>
             </View>
             <View>
-              <Text style={styles.selected}>Select it manually </Text>
+              <Text style={styles.selected}>
+                {I18n.t("shipment_location_select_it")}
+              </Text>
             </View>
           </View>
           <View />

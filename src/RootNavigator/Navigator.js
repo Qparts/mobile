@@ -308,11 +308,11 @@ const StackNavigator = createStackNavigator(
           <MenuImage navigation={navigation} />
         </TouchableOpacity>
       ),
-      headerRight: (
-        <TouchableOpacity>
-          <RightHeader navigation={navigation} />
-        </TouchableOpacity>
-      ),
+      // headerRight: (
+      //   <TouchableOpacity>
+      //     <RightHeader navigation={navigation} />
+      //   </TouchableOpacity>
+      // ),
       headerStyle: {
         backgroundColor: "#333"
       },

@@ -294,13 +294,13 @@ class LoginForm extends Component {
               onPress={this._handlePasswordRecovry.bind(this)}
               style={styles.forgotPassword}
             >
-              Forgot Password ?
+              {I18n.t("login_form_forgot_password")}
             </Text>
           </View>
           <View style={styles.footerContianer}>
             <View style={styles.orSignInContainer}>
               <View style={styles.orSignIn}>
-                <Text>Or Sign in With</Text>
+                <Text> {I18n.t("login_form_orsign_inwith")}</Text>
               </View>
             </View>
             <View style={styles.socialContainer}>
@@ -322,13 +322,12 @@ class LoginForm extends Component {
                 </View>
               </View>
               <View style={styles.noAccountContainer}>
-                <Text>No Account </Text>
+                <Text>{I18n.t("login_form_no_account")}</Text>
                 <Text
                   style={styles.noAccountRegister}
                   onPress={() => this.onPressRegister()}
                 >
-                  {" "}
-                  Register
+                  {I18n.t("login_form_register")}
                 </Text>
               </View>
             </View>

@@ -8,6 +8,7 @@ import {
   TextInput
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import I18n from "../../I18n";
 
 var { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -106,11 +107,11 @@ class ShipmentCountry extends Component {
           </View>
           <View style={styles.userCurrent}>
             <Text style={styles.buttonText}>
-              <Icon size={18} name="md-locate" /> User current Location
+              <Icon size={18} name="md-locate" />{I18n.t("shipment_country_user_current_location")}
             </Text>
             <View style={styles.customLine} />
             <View>
-              <Text style={styles.chooseText}>Choose Your Country</Text>
+              <Text style={styles.chooseText}>{I18n.t("shipment_country_choose_your")}</Text>
             </View>
             <View style={styles.container}>
               <FlatList

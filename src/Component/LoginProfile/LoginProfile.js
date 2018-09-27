@@ -6,6 +6,7 @@ import {
   Dimensions,
   Text
 } from "react-native";
+import I18n from "../../I18n";
 var { width } = Dimensions.get("window");
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
   },
   socialContainer: {
     flexDirection: "row",
-     marginTop: "3%"
+    marginTop: "3%"
   },
   socialButton: {
     borderWidth: 1,
@@ -88,39 +89,41 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: "#fff",
     borderRadius: 100,
-    marginRight:'3%',
+    marginRight: "3%"
   }
 });
 class LoginProfile extends Component {
-
-  onPressSignIn(){
+  onPressSignIn() {
     this.props.navigation.navigate("Login");
   }
-  onPressRegister(){
+  onPressRegister() {
     this.props.navigation.navigate("signup");
-
   }
   render() {
     return (
       <View style={styles.loginContainer}>
         <View style={styles.subContainer}>
           <View>
-            <Text style={styles.loginText}>QETAA.COM</Text>
+            <Text style={styles.loginText}>
+              {I18n.t("login_profile_login_text")}
+            </Text>
           </View>
           <View>
             <Text style={styles.loginTextMember}>
-              20sR in Wallet For New Members
+              {I18n.t("login_profile_login_text_member")}
             </Text>
           </View>
           <View>
-            <Text style={styles.loginTextHello}>Hello.</Text>
+            <Text style={styles.loginTextHello}>
+              {I18n.t("login_profile_hello")}
+            </Text>
           </View>
           <View>
             <Text style={styles.loginCanUse}>
-              You can use your email or continue with
+              {I18n.t("login_profile_you_can")}
             </Text>
             <Text style={styles.loginCanUse}>
-              social edia account , or create an account
+              {I18n.t("login_profile_social")}
             </Text>
           </View>
           <View style={styles.buttonContainer}>
@@ -128,7 +131,9 @@ class LoginProfile extends Component {
               style={styles.buttonStyle}
               onPress={() => this.onPressRegister()}
             >
-              <Text style={styles.buttonText}>Register</Text>
+              <Text style={styles.buttonText}>
+                {I18n.t("login_profile_register")}
+              </Text>
             </TouchableOpacity>
           </View>
           <View>
@@ -136,11 +141,13 @@ class LoginProfile extends Component {
               style={styles.buttonSigninStyle}
               onPress={() => this.onPressSignIn()}
             >
-              <Text style={styles.buttonText1}>Sign in</Text>
+              <Text style={styles.buttonText1}>
+                {I18n.t("login_profile_sign_in")}
+              </Text>
             </TouchableOpacity>
           </View>
           <View>
-            <Text>Sign in with</Text>
+            <Text>{I18n.t("login_profile_signin_with")}</Text>
           </View>
           <View style={styles.socialContainer}>
             <View>

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TextInput
 } from "react-native";
+import I18n from "../../I18n";
 var { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
@@ -87,7 +88,11 @@ class PasswordRecovery extends Component {
       return false;
     } else if (!this.validateEmail(this.state.email)) {
       this.setState({
-        usernameError: <Text style={styles.errorStyle}>email Not Valid</Text>
+        usernameError: (
+          <Text style={styles.errorStyle}>
+            {I18n.t("password_recovery_email_not_valid")}
+          </Text>
+        )
       });
       return false;
     }
@@ -96,11 +101,14 @@ class PasswordRecovery extends Component {
   validation() {
     this.state.email === ""
       ? this.setState({
-          emailError: <Text style={styles.errorStyle}>email required</Text>
+          emailError: (
+            <Text style={styles.errorStyle}>
+              {I18n.t("password_recovery_email_required")}
+            </Text>
+          )
         })
       : this.setState({ emailError: null });
   }
-
   validateEmail(value) {
     let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(value);
@@ -110,16 +118,18 @@ class PasswordRecovery extends Component {
       <View style={styles.loginContainer}>
         <View style={styles.subContainer}>
           <View>
-            <Text style={styles.loginText}>Forgot Password ? </Text>
+            <Text style={styles.loginText}>
+              {I18n.t("password_recovery_forgot_password")}
+            </Text>
           </View>
           <View>
-            <Text>Enter your email addres below and we will send</Text>
+            <Text>{I18n.t("password_recovery_enter_your_email")}</Text>
           </View>
           <View>
-            <Text>you email with instrucation on how to change</Text>
+            <Text>{I18n.t("password_recovery_your_email_with")}</Text>
           </View>
           <View>
-            <Text>your password</Text>
+            <Text>{I18n.t("password_recovery_your_email")}</Text>
           </View>
           <View style={styles.inputContainer}>
             <View style={styles.inputSubContainer}>
@@ -136,7 +146,9 @@ class PasswordRecovery extends Component {
                   email === ""
                     ? this.setState({
                         emailError: (
-                          <Text style={styles.errorStyle}>Email Required</Text>
+                          <Text style={styles.errorStyle}>
+                            {I18n.t("Password_recovery_email")}
+                          </Text>
                         )
                       })
                     : this.setState({ emailError: null });
@@ -146,13 +158,15 @@ class PasswordRecovery extends Component {
             </View>
           </View>
           <Text style={styles.errorStyle}>{this.state.emailError}</Text>
-
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.buttonStyle}
               onPress={this.handleSend.bind(this)}
             >
-              <Text style={styles.buttonText}>Send</Text>
+              <Text style={styles.buttonText}>
+                {" "}
+                {I18n.t("Password_recovery_send")}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { Card, CardItem, Button } from "../../common";
+import I18n from "../../I18n";
+
 const styles = StyleSheet.create({
   errorStyle: {
     fontSize: 17,
@@ -38,7 +40,7 @@ class ResetPasswrd extends Component {
       this.setState({
         confirmPasswordError: (
           <Text style={styles.errorStyle}>
-            password and confirmation password do not match .
+            {I18n.t("reset_password_password_confirmation")}
           </Text>
         )
       });
@@ -50,14 +52,18 @@ class ResetPasswrd extends Component {
     this.state.password === ""
       ? this.setState({
           passwordError: (
-            <Text style={styles.errorStyle}>Password required</Text>
+            <Text style={styles.errorStyle}>
+              {I18n.t("reset_password_password_required")}
+            </Text>
           )
         })
       : this.setState({ passwordError: null });
     this.state.confirmPassword === ""
       ? this.setState({
           confirmPasswordError: (
-            <Text style={styles.errorStyle}>Confirm Password required</Text>
+            <Text style={styles.errorStyle}>
+              {I18n.t("reset_password_confirm_password_required")}
+            </Text>
           )
         })
       : this.setState({ confirmPasswordError: null });
@@ -68,9 +74,7 @@ class ResetPasswrd extends Component {
       <View>
         <Card>
           <CardItem>
-            <Text>
-              Enter Your New Password below, we're jsut being extra safe
-            </Text>
+            <Text>{I18n.t("reset_password_enter_new")}</Text>
           </CardItem>
           <View style={styles.cardItem}>
             <TextInput
@@ -83,7 +87,11 @@ class ResetPasswrd extends Component {
                 password === ""
                   ? this.setState({
                       passwordError: (
-                        <Text style={styles.errorStyle}>password Required</Text>
+                        <Text style={styles.errorStyle}>
+                          <Text>
+                            {I18n.t("reset_password_password_required")}
+                          </Text>
+                        </Text>
                       )
                     })
                   : this.setState({ passwordError: null });
@@ -103,7 +111,7 @@ class ResetPasswrd extends Component {
                   ? this.setState({
                       confirmPasswordError: (
                         <Text style={styles.errorStyle}>
-                          Confirm password Required
+                          {I18n.t("reset_password_confirm_password_required")}
                         </Text>
                       )
                     })
@@ -114,7 +122,9 @@ class ResetPasswrd extends Component {
           </View>
           <Text style={styles.errorStyle}>{this.state.passwordError}</Text>
           <CardItem>
-            <Button onPress={this.handleReset.bind(this)}>Reset</Button>
+            <Button onPress={this.handleReset.bind(this)}>
+              {I18n.t("reset_password_reset")}
+            </Button>
           </CardItem>
         </Card>
       </View>

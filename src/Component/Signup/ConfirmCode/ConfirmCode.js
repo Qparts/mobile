@@ -7,6 +7,7 @@ import {
   Text,
   TextInput
 } from "react-native";
+import I18n from "../../../I18n";
 import userControllers from "../../../providers/controllers/UsersAPIControllers";
 var { width } = Dimensions.get("window");
 
@@ -97,7 +98,11 @@ class ConfirmCode extends Component {
   validation() {
     this.state.code === ""
       ? this.setState({
-          codeErrorError: <Text style={styles.errorStyle}>Code Required</Text>
+          codeErrorError: (
+            <Text style={styles.errorStyle}>
+              {I18n.t("confirm_code_required")}
+            </Text>
+          )
         })
       : this.setState({ codeErrorError: null });
   }
@@ -106,10 +111,12 @@ class ConfirmCode extends Component {
       <View style={styles.loginContainer}>
         <View style={styles.subContainer}>
           <View>
-            <Text style={styles.loginText}>Verify Your Phone number </Text>
+            <Text style={styles.loginText}>
+              {I18n.t("confirm_code_verify_your")}{" "}
+            </Text>
           </View>
           <View>
-            <Text>Enter your OTP code here</Text>
+            <Text>{I18n.t("confirm_code_enter_your_otp")}</Text>
           </View>
           <View style={styles.inputContainer}>
             <View style={styles.inputSubContainer}>
@@ -126,7 +133,9 @@ class ConfirmCode extends Component {
                   code === ""
                     ? this.setState({
                         codeError: (
-                          <Text style={styles.errorStyle}>Error Code</Text>
+                          <Text style={styles.errorStyle}>
+                            {I18n.t("confirm_code_error_code")}
+                          </Text>
                         )
                       })
                     : this.setState({ codeError: null });
@@ -140,7 +149,9 @@ class ConfirmCode extends Component {
               style={styles.buttonStyle}
               onPress={this._onVerviyPressed.bind(this)}
             >
-              <Text style={styles.buttonText}>Verviy Now</Text>
+              <Text style={styles.buttonText}>
+                {I18n.t("confirm_code_verify_now")}
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

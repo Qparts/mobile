@@ -6,6 +6,7 @@ import {
   AsyncStorage,
   ActivityIndicator
 } from "react-native";
+import I18n from "../../I18n";
 
 const styles = StyleSheet.create({
   container: {
@@ -42,7 +43,7 @@ class Splash extends Component {
     return (
       <View style={styles.container}>
         <ActivityIndicator size={"small"} />
-        <Text style={styles.loadingText}>Loading ...</Text>
+        <Text style={styles.loadingText}>{I18n.t("splash_text")}</Text>
       </View>
     );
   }

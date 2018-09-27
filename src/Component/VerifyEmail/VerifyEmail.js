@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { CardItem, Button } from "../../common";
+import I18n from "../../I18n";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
@@ -30,21 +31,24 @@ class VerifyEmail extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <Text style={styles.thanksStyle}>Thank You !</Text>
+          <Text style={styles.thanksStyle}>
+            {I18n.t("verify_email_thank_you")}
+          </Text>
         </View>
         <View>
           <Text style={styles.sendEmailText}>
-            we've sent an email to{" "}
-            <Text style={styles.domainText}>your@domain.com </Text>
+            <Text style={styles.domainText}>
+              {I18n.t("verify_email_domain")}
+            </Text>
           </Text>
         </View>
         <View>
           <Text style={styles.activateAccountText}>
-            please click the link in that message to activate your account
+            {I18n.t("verify_email_please")}
           </Text>
         </View>
         <CardItem>
-          <Button>Take Me To login</Button>
+          <Button>{I18n.t("verify_email_take_me")}</Button>
         </CardItem>
       </View>
     );
